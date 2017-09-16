@@ -53,18 +53,21 @@
 	  var loader = new THREE.TextureLoader();
       var texture = loader.load("img/green_mat.png");
 
-	  // 								 x, y, z, color, width, height, depth
+	  // x, y, z, color, width, height, depth
 	  var green_mat = new boxConstructor(0, 0, 0, '#008000',2.8 , 0.1, 1.6);
 	  var wall_1 = new boxConstructor(1.4, 0, 0, '#835C3B', 0.1, 0.2, 1.7);
 	  var wall_2 = new boxConstructor(-1.4, 0, 0, '#835C3B', 0.1, 0.2, 1.7);
 	  var wall_3 = new boxConstructor(0, 0, 0.8, '#835C3B', 2.7, 0.2, 0.1);
 	  var wall_4 = new boxConstructor(0, 0, -0.8, '#835C3B', 2.7, 0.2, 0.1);
 	  
-    scene.add(green_mat);
-	  scene.add(wall_1);
-	  scene.add(wall_2);
-	  scene.add(wall_3);
-	  scene.add(wall_4);
+    var eight_ball_table = new THREE.Group();
+    eight_ball_table.add(green_mat);
+	  eight_ball_table.add(wall_1);
+	  eight_ball_table.add(wall_2);
+	  eight_ball_table.add(wall_3);
+	  eight_ball_table.add(wall_4);
+    
+    scene.add(eight_ball_table);
 	  
 	  //Creating the balls (lol)
     var white_ball = new ballConstructor(-1.0, 0.1, 0, '#FFFFFF');
@@ -111,7 +114,6 @@
       scene.add( axisHelper );
 
       // add to the scene
-
       var render = function () {
         requestAnimationFrame( render );
         renderer.render( scene, camera );
