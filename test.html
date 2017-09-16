@@ -32,11 +32,45 @@
       var green_mat_mesh = new THREE.Mesh( geometry, green_mat );
       scene.add( green_mat_mesh );
 
-      camera.position.x = 2.5;
-      camera.position.y = 2.5;
-      camera.position.z = 2.5;
-      camera.lookAt( green_mat_mesh.position );
-
+	  //Defining group of all balls
+	  //var balls = new THREE.Group();
+	  //scene.add(balls);
+	  
+	  //Constructor of a ball
+	  class ballConstructor {
+		constructor(x, y, z, lorem){
+			var ballMaterial = new THREE.MeshPhongMaterial({
+				fog : true,
+				color : lorem
+			});
+			
+			var ballSize = new THREE.SphereGeometry(0.2,10,10);
+			var ball = new THREE.Mesh(ballSize, ballMaterial);
+			
+			ball.position.set(x, y, z);
+			//balls.add(ball);
+			return ball;
+		}
+	  }
+	  
+	  //Creating the balls (lol)
+	  var ball_1 = new ballConstructor(0, 1, 0, '#FF0000');
+	  var ball_2 = new ballConstructor(0, 2, 0, '#FFFF00');
+	  var ball_3 = new ballConstructor(0, 3, 0, '#008000');
+	  var ball_4 = new ballConstructor(0, 4, 0, '#FF69B4');
+	  
+	  scene.add(ball_1); 
+	  scene.add(ball_2); 
+	  scene.add(ball_3); 
+	  scene.add(ball_4); 
+	  
+	  //Set the camera position
+      camera.position.x = 5;
+      camera.position.y = 5;
+      camera.position.z = 5;
+      //camera.lookAt( green_mat_mesh.position );
+	  camera.lookAt(ball_4.position);
+	  
       // // create a point light
       const pointLight = new THREE.PointLight(0xFFFFFF);
 
