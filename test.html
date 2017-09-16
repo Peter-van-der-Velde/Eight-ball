@@ -16,32 +16,13 @@
       renderer.setSize( window.innerWidth, window.innerHeight );
       document.body.appendChild( renderer.domElement );
 
-      var loader = new THREE.TextureLoader();
-      var texture = loader.load("img/green_mat.png");
-
-      var geometry = new THREE.BoxGeometry( 3.50, 0.1, 2.70 );
-      var material = new THREE.MeshNormalMaterial();
       
-      var green_mat = new THREE.MeshPhongMaterial({
-        color: 0xaaaaaa,
-        specular: 0x333333,
-        shininess: 15,
-        map: texture
-      });
-
-      var green_mat_mesh = new THREE.Mesh( geometry, green_mat );
-      scene.add( green_mat_mesh );
-
-	  //Defining group of all balls
-	  //var balls = new THREE.Group();
-	  //scene.add(balls);
-	  
 	  //Constructor of a ball
 	  class ballConstructor {
-		constructor(x, y, z, lorem){
+		constructor(x, y, z, constructorColor){
 			var ballMaterial = new THREE.MeshPhongMaterial({
 				fog : true,
-				color : lorem
+				color : constructorColor
 			});
 			
 			var ballSize = new THREE.SphereGeometry(0.2,10,10);
@@ -52,6 +33,38 @@
 			return ball;
 		}
 	  }
+	  
+	  //Constructor of a box
+	  class boxConstructor {
+		constructor(x, y, z, constructorColor, height, width, depth){
+			var boxMaterial = new THREE.MeshPhongMaterial({
+				color : constructorColor
+			});
+			
+			var boxSize = new THREE.BoxGeometry(height,width,depth);
+			var box = new THREE.Mesh(boxSize, boxMaterial);
+			
+			box.position.set(x, y, z);
+			return box;
+		}
+	  }
+	  
+	  //TextureLoader
+	  var loader = new THREE.TextureLoader();
+      var texture = loader.load("img/green_mat.png");
+
+	  // 								 x, y, z, color, width, height, depth
+	  var green_mat = new boxConstructor(0, 0.5, 0, '#008000', 6, 0.1, 10);
+	  var wall_1 = new boxConstructor(3, 0.7, 0, '#FF0000', 0.4, 0.4, 9.6);
+	  var wall_2 = new boxConstructor(-3, 0.7, 0, '#FF0000', 0.4, 0.4, 9.6);
+	  var wall_3 = new boxConstructor(0, 0.7, 5, '#FF0000', 6.4, 0.4, 0.4);
+	  var wall_4 = new boxConstructor(0, 0.7, -5, '#FF0000', 6.4, 0.4, 0.4);
+	  
+      scene.add(green_mat);
+	  scene.add(wall_1);
+	  scene.add(wall_2);
+	  scene.add(wall_3);
+	  scene.add(wall_4);
 	  
 	  //Creating the balls (lol)
 	  var ball_1 = new ballConstructor(0, 1, 0, '#FF0000');
@@ -65,25 +78,24 @@
 	  scene.add(ball_4); 
 	  
 	  //Set the camera position
-      camera.position.x = 5;
-      camera.position.y = 5;
-      camera.position.z = 5;
-      //camera.lookAt( green_mat_mesh.position );
-	  camera.lookAt(ball_4.position);
+      camera.position.x = 7;
+      camera.position.y = 7;
+      camera.position.z = 7;
+	  camera.lookAt(ball_1.position);
 	  
       // // create a point light
       const pointLight = new THREE.PointLight(0xFFFFFF);
 
-      // set its position
+      // set the light position
       pointLight.position.x = 0;
       pointLight.position.y = 20;
       pointLight.position.z = 0;
-      pointLight.lookAt( green_mat_mesh );
+      pointLight.lookAt( green_mat );
       scene.add(pointLight);
 
       var Light = new THREE.DirectionalLight( 0xdddddd, 0.8 );
       Light.position.set( -8, 8, 8 );
-      Light.lookAt ( green_mat_mesh );
+      Light.lookAt ( green_mat );
       scene.add(Light);
       
       var LightA = new THREE.AmbientLight( 0x000 );
