@@ -44,7 +44,7 @@
 				color : lorem
 			});
 			
-			var ballSize = new THREE.SphereGeometry(0.2,10,10);
+			var ballSize = new THREE.SphereGeometry(0.06);
 			var ball = new THREE.Mesh(ballSize, ballMaterial);
 			
 			ball.position.set(x, y, z);
@@ -54,22 +54,24 @@
 	  }
 	  
 	  //Creating the balls (lol)
-	  var ball_1 = new ballConstructor(0, 1, 0, '#FF0000');
-	  var ball_2 = new ballConstructor(0, 2, 0, '#FFFF00');
-	  var ball_3 = new ballConstructor(0, 3, 0, '#008000');
-	  var ball_4 = new ballConstructor(0, 4, 0, '#FF69B4');
+    var white_ball = new ballConstructor(-1.0, 0.1, 0, '#FFFFFF');
+	  var ball_1 = new ballConstructor(1.0, 0.1, 0, '#FF0000');
+	  var ball_2 = new ballConstructor(1.1, 0.1, 0, '#FFFF00');
+	  var ball_3 = new ballConstructor(1.2, 0.1, 0, '#008000');
+	  var ball_4 = new ballConstructor(1.3, 0.1, 0, '#FF69B4');
 	  
+    scene.add(white_ball);
 	  scene.add(ball_1); 
 	  scene.add(ball_2); 
 	  scene.add(ball_3); 
 	  scene.add(ball_4); 
 	  
 	  //Set the camera position
-      camera.position.x = 5;
-      camera.position.y = 5;
-      camera.position.z = 5;
-      //camera.lookAt( green_mat_mesh.position );
-	  camera.lookAt(ball_4.position);
+     camera.position.x = -2;
+     camera.position.y = 2;
+     camera.position.z = 2;
+     //camera.lookAt( green_mat_mesh.position );
+	  camera.lookAt(white_ball.position);
 	  
       // // create a point light
       const pointLight = new THREE.PointLight(0xFFFFFF);
