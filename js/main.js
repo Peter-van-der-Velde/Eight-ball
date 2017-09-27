@@ -13,14 +13,17 @@
 
 	//TextureLoader
 	var loader = new THREE.TextureLoader();
-	var texture = loader.load("img/green_mat.png");
+	var floorTexture = loader.load("img/floor.png");
+	var tableTexture = loader.load("img/green_mat.png");
 
 	//Room Textures
-	var floor = new box(0, 2, 0, 'floorTexture', 2.8, 0.1, 1.6);
+	roomBuilder(20, 20, floorTexture);
+	
+	scene.add(roomItems);
 	
 	//Table
 	// x, y, z, color, width, height, depth
-	var green_mat = new box(0, 1, 0, texture,2.8 , 0.1, 1.6);
+	var green_mat = new textureBox(0, 1, 0, tableTexture,2.8 , 0.1, 1.6);
 	var wall_1 = new box(1.4, 1, 0, '#835C3B', 0.1, 0.2, 1.7);
 	var wall_2 = new box(-1.4, 1, 0, '#835C3B', 0.1, 0.2, 1.7);
 	var wall_3 = new box(0, 1, 0.8, '#835C3B', 2.7, 0.2, 0.1);
@@ -31,6 +34,7 @@
 	var leg_4 = new box(-1.4, 0.5, -0.8, '#835C3B', 0.1, 1, 0.1);
 
 	var eight_ball_table = new THREE.Group();
+	//eight_ball_table.add(floor);
 	eight_ball_table.add(green_mat);
 	eight_ball_table.add(wall_1);
 	eight_ball_table.add(wall_2);
