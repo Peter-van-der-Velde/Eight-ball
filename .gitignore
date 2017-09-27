@@ -50,3 +50,4 @@ Temporary Items
 # NodeJS
 # =======================
 node_modules/
+*~ # Scratch-editor files
