@@ -1,5 +1,5 @@
 //Constructor of a box
-class box {
+export class box {
     constructor(x, y, z, constructorColor, height, width, depth){
         var boxMaterial = new THREE.MeshPhongMaterial({
 			color : constructorColor

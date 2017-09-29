@@ -1,5 +1,5 @@
 //Constructor of a ball
-class ball {
+export class ball {
     constructor(x, y, z, constructorColor){
         var ballMaterial = new THREE.MeshPhongMaterial({
             fog : true,

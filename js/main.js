@@ -1,3 +1,6 @@
+	import {ball} from './ball.js';
+	import {box} from './box.js';
+	
 	var scene = new THREE.Scene();
 	var aspect = window.innerWidth / window.innerHeight;
 	var camera = new THREE.PerspectiveCamera( 75, aspect, 0.1, 1000 );
@@ -9,7 +12,6 @@
 
 	var controls = new THREE.OrbitControls(camera, renderer.domElement);
 	controls.target.set(0,0,0);
-	//controls.update();
 
 	//TextureLoader
 	var loader = new THREE.TextureLoader();
@@ -18,7 +20,6 @@
 
 	//Room Textures
 	roomBuilder(20, 20, floorTexture);
-	
 	scene.add(roomItems);
 	
 	//Table
@@ -60,27 +61,16 @@
 	scene.add(ball_4);
 
 	//Set the camera position
-	camera.position.x = -2;
-	camera.position.y = 1.5;
-	camera.position.z = 1.5;
+	camera.position.set(-2, 1.5, 1.5);
 	camera.lookAt(green_mat.position);
 
-	// // create a point light
-	const pointLight = new THREE.PointLight(0xFFFFFF);
-	// set the position of the light
-	pointLight.position.x = 0;
-	pointLight.position.y = 20;
-	pointLight.position.z = 0;
+	// add lights to scene
 	pointLight.lookAt( green_mat );
 	scene.add(pointLight);
-	var Light = new THREE.DirectionalLight( 0xdddddd, 0.8 );
-	Light.position.set( -8, 8, 8 );
 	Light.lookAt ( green_mat );
 	scene.add(Light);
-
-	var LightA = new THREE.AmbientLight( 0x000 );
 	scene.add(LightA);
-	//light.position.set ()
+
 	var grid = new THREE.GridHelper(100, 100);
 	scene.add(grid);
 	var axisHelper = new THREE.AxisHelper( 20 );
