@@ -14,10 +14,10 @@ class Vector3 {
     }
 
     mul(scalar) {
-        this.x *= scalar;
-        this.y *= scalar;
-        this.z *= scalar;
+        //this.x *= scalar;
+        //this.y *= scalar;
+        //this.z *= scalar;
 
-        return this;
+        return new Vector3(this.x * scalar, this.y * scalar, this.z * scalar);
     }
 }

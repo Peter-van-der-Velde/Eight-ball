@@ -43,6 +43,7 @@ eight_ball_table.add(leg_1);
 eight_ball_table.add(leg_2);
 eight_ball_table.add(leg_3);
 eight_ball_table.add(leg_4);
+eight_ball_table.castShadow = true;
 scene.add(eight_ball_table);
 
 //Creating the balls (lol)
@@ -82,9 +83,9 @@ var render = function () {
 	requestAnimationFrame( render );
 };
 
-function animate() {
-   requestAnimationFrame( animate );
-}
+//function animate() {
+//   requestAnimationFrame( animate );
+//}
 
 animate();
 render();

@@ -23,35 +23,37 @@ export class BilliardBall {
 
     }
 
-    updatePosition(position) {
-        this.mesh.position.x = position.x;
-        this.mesh.position.y = position.y;
-        this.mesh.position.z = position.z;
+    updatePosition(newPosition) {
+        console.log("Help: " + newPosition.x)
+        this.mesh.position.x = newPosition.x;
+        this.mesh.position.y = newPosition.y;
+        this.mesh.position.z = newPosition.z;        
     }
 
     update(dt, bounds) {    // dt is the difference in time 
-        this.velocity
-            .add(this.acceleration)
-            .mul(this.friction);
+        
+        var posx = this.position.x + (this.velocity.x * dt);
+        var posy = this.position.y + (this.velocity.y * dt);
+        var posz = this.position.z + (this.velocity.z * dt);
 
-        this.position
-            .add(this.velocity)
-            .mul(dt);
+        this.position = new Vector3(posx, posy, posz);
+ 
+
 
         if (this.position.x < bounds.x) {
-            //this.position.x = bounds.x;
+            this.position.x = bounds.x;
             this.velocity.x *= -this.restitution;
         } else if (this.position.x > bounds.cx) {
-            //this.position.x = bounds.cx - this.size;
+            this.position.x = bounds.cx - this.size;
             this.velocity.x *= -this.restitution;            
         }
 
-        if (this.position.z < bounds.cz) {
-            //this.position.z = bounds.z;
+        if (this.position.z < bounds.z) {
+            this.position.z = bounds.z;
             this.velocity.z *= -this.restitution;
         } else if (this.position.z > bounds.cz) {
-            //this.position.y = bounds.cy - this.size;
-            this.velocity.y *= -this.restitution;     
+            this.position.z = bounds.cz - this.size;
+            this.velocity.z *= -this.restitution;     
         }
 
         this.updatePosition(this.position)
