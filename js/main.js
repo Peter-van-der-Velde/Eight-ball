@@ -1,4 +1,3 @@
-import {BilliardBall as ball} from './ball.js';
 import {box} from './box.js';
 
 var scene = new THREE.Scene();
@@ -87,5 +86,5 @@ var render = function () {
 //   requestAnimationFrame( animate );
 //}
 
-animate();
+//animate();
 render();

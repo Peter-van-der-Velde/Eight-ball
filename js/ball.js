@@ -10,7 +10,7 @@ class ball {
         this.velocity = new THREE.Vector3(0, 0, 0);
         this.acceleration = new THREE.Vector3(0, 0, 0);
         this.friction = 0.995;
-        this.restitution = 0.5; // bounciness of said ball
+        this.restitution = 1; // bounciness of said ball
         this.size = 0.03;
 
         var billiardBallMaterial = new THREE.MeshPhongMaterial({
@@ -20,7 +20,7 @@ class ball {
 
         var billiardBallSize = new THREE.SphereGeometry(this.size);
         this.mesh = new THREE.Mesh(billiardBallSize, billiardBallMaterial);
-    
+
         this.mesh.position.set(this.position.x, this.position.y, this.position.z)
 
     }
@@ -32,6 +32,13 @@ class ball {
     }
 
     update(dt, bounds) {    // dt is the difference in time 
+        
+        
+
+
+        this.velocity.x = (this.velocity.x + this.acceleration.x) * this.friction;
+        this.velocity.y = (this.velocity.y + this.acceleration.y) * this.friction;
+        this.velocity.z = (this.velocity.z + this.acceleration.z) * this.friction;
         
         var posx = this.position.x + (this.velocity.x * dt);
         var posy = this.position.y + (this.velocity.y * dt);
@@ -63,7 +70,6 @@ class ball {
                 }
             }
         }
-
         this.updatePosition(this.position)
         // console.log("p2: ");
         // console.log(this.mesh.position)

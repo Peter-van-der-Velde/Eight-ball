@@ -14,6 +14,7 @@ console.log(renderer);
 var controls = new THREE.OrbitControls(camera, renderer.domElement);
 controls.target.set(0, 0, 0);
 camera.position.set(-1, 0.75, 0.75);
+camera.lookAt(0, 0, 0)
 
 var grid = new THREE.GridHelper(100, 100);
 scene.add(grid);
@@ -22,33 +23,21 @@ scene.add( axisHelper );
 
 var colBounds = new bounds (-1, -1.1, 1, 1.1);
 var ball_1 = new ball(1, 0, 1, '#FF0000');
-ball_1.friction = 1; // no friction
-ball_1.restitution = 1;// loses no speed when hitting a boundary
 ball_1.velocity = new THREE.Vector3(0.5, 0, 0.5);
 
 var ball_2 = new ball(0.5, 0, 0, '#FFFF00');
-ball_2.friction = 1; 
-ball_2.restitution = 1;
 ball_2.velocity = new THREE.Vector3(0.5, 0, 0);
 
 var ball_3 = new ball(0, 0, 0, '#FFFFFF');
-ball_3.friction = 1; 
-ball_3.restitution = 1; 
 ball_3.velocity = new THREE.Vector3(0.5, 0, 0);
 
 var ball_4 = new ball(0.1, 0, 0, '#eca1a6');
-ball_4.friction = 1; 
-ball_4.restitution = 1; 
 ball_4.velocity = new THREE.Vector3(0.4, 0, 0.7);
 
 var ball_5 = new ball(0, 0, 0.3, '#618685');
-ball_5.friction = 1; 
-ball_5.restitution = 1; 
 ball_5.velocity = new THREE.Vector3(0.3, 0, 0.4);
 
 var ball_6 = new ball(0, 0, 0, '#50394c');
-ball_6.friction = 1; 
-ball_6.restitution = 1; 
 ball_6.velocity = new THREE.Vector3(1, 0, 0.8);
 
 balls.push(ball_1);
