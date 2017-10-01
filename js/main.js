@@ -9,7 +9,7 @@ renderer.setSize( window.innerWidth, window.innerHeight );
 document.body.appendChild( renderer.domElement );
 console.log(renderer);
 var controls = new THREE.OrbitControls(camera, renderer.domElement);
-controls.target.set(0,0,0);
+controls.target.set(0, 0, 0);
 
 //TextureLoader
 var loader = new THREE.TextureLoader();

@@ -1,4 +1,3 @@
-import {BilliardBall as ball} from './ball.js';
 import {box} from './box.js';
 
 
@@ -13,7 +12,7 @@ document.body.appendChild( renderer.domElement );
 console.log(renderer);
 
 var controls = new THREE.OrbitControls(camera, renderer.domElement);
-controls.target.set(0,0,0)
+controls.target.set(0, 0, 0);
 camera.position.set(-1, 0.75, 0.75);
 
 var grid = new THREE.GridHelper(100, 100);
@@ -21,24 +20,61 @@ scene.add(grid);
 var axisHelper = new THREE.AxisHelper( 20 );
 scene.add( axisHelper );
 
-var colBounds = new bounds (-1, -1.1, 1, 1.1)
+var colBounds = new bounds (-1, -1.1, 1, 1.1);
 var ball_1 = new ball(1, 0, 1, '#FF0000');
 ball_1.friction = 1; // no friction
-ball_1.restitution = 1 // loses no speed when hitting a boundary
-ball_1.velocity = new Vector3(0.5, 0, 0.5)
+ball_1.restitution = 1;// loses no speed when hitting a boundary
+ball_1.velocity = new THREE.Vector3(0.5, 0, 0.5);
 
-scene.add(ball_1.mesh);
+var ball_2 = new ball(0.5, 0, 0, '#FFFF00');
+ball_2.friction = 1; 
+ball_2.restitution = 1;
+ball_2.velocity = new THREE.Vector3(0.5, 0, 0);
+
+var ball_3 = new ball(0, 0, 0, '#FFFFFF');
+ball_3.friction = 1; 
+ball_3.restitution = 1; 
+ball_3.velocity = new THREE.Vector3(0.5, 0, 0);
+
+var ball_4 = new ball(0.1, 0, 0, '#eca1a6');
+ball_4.friction = 1; 
+ball_4.restitution = 1; 
+ball_4.velocity = new THREE.Vector3(0.4, 0, 0.7);
+
+var ball_5 = new ball(0, 0, 0.3, '#618685');
+ball_5.friction = 1; 
+ball_5.restitution = 1; 
+ball_5.velocity = new THREE.Vector3(0.3, 0, 0.4);
+
+var ball_6 = new ball(0, 0, 0, '#50394c');
+ball_6.friction = 1; 
+ball_6.restitution = 1; 
+ball_6.velocity = new THREE.Vector3(1, 0, 0.8);
+
+balls.push(ball_1);
+balls.push(ball_2);
+balls.push(ball_3);
+balls.push(ball_4);
+balls.push(ball_5);
+balls.push(ball_6);
+
+balls.forEach(function(ball) {
+	scene.add(ball.mesh)
+}, this);
 
 // add lights to scene
 pointLight.lookAt( ball_1 );
 scene.add(pointLight);
 Light.lookAt ( ball_1 );
 scene.add(Light);
-scene.add(LightA)
+scene.add(LightA);
 
 var render = function () {
 	var delta = clock.getDelta();
-	ball_1.update(delta, colBounds)
+	balls.forEach(function(ball) {
+		ball.update(delta, colBounds)
+	}, this);
+	
 	renderer.render( scene, camera );
 	requestAnimationFrame( render );
 	//var time = clock.getElapsedTime();
