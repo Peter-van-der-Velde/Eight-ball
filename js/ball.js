@@ -9,9 +9,10 @@ class ball {
         this.position = new THREE.Vector3(x, y, z);
         this.velocity = new THREE.Vector3(0, 0, 0);
         this.acceleration = new THREE.Vector3(0, 0, 0);
-        this.friction = 0.995;
+        this.friction = 1;
         this.restitution = 1; // bounciness of said ball
         this.size = 0.03;
+        this.weight = 1;
 
         var billiardBallMaterial = new THREE.MeshPhongMaterial({
             fog : true,
@@ -31,11 +32,12 @@ class ball {
         this.mesh.position.z = newPosition.z;        
     }
 
+    calcCollision(ball_1, ball_2) {
+        console.log(this)
+    }
+
     update(dt, bounds) {    // dt is the difference in time 
         
-        
-
-
         this.velocity.x = (this.velocity.x + this.acceleration.x) * this.friction;
         this.velocity.y = (this.velocity.y + this.acceleration.y) * this.friction;
         this.velocity.z = (this.velocity.z + this.acceleration.z) * this.friction;
@@ -67,6 +69,7 @@ class ball {
                 if (this.position.distanceTo(balls[i].position) < this.size*2) {
                     this.velocity.multiplyScalar(-1);
                     console.log("bam!" + this.position.distanceTo(balls[i].position));
+                    this.calcCollision(this, balls[i]);
                 }
             }
         }

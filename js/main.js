@@ -7,6 +7,7 @@ var renderer = new THREE.WebGLRenderer({antialias:true});
 renderer.setSize( window.innerWidth, window.innerHeight );
 document.body.appendChild( renderer.domElement );
 console.log(renderer);
+var clock = new THREE.Clock();
 var controls = new THREE.OrbitControls(camera, renderer.domElement);
 controls.target.set(0, 0, 0);
 
@@ -31,6 +32,7 @@ var leg_2 = new box(1.4, 0.5, 0.8, '#835C3B', 0.1, 1, 0.1);
 var leg_3 = new box(-1.4, 0.5, 0.8, '#835C3B', 0.1, 1, 0.1);
 var leg_4 = new box(-1.4, 0.5, -0.8, '#835C3B', 0.1, 1, 0.1);
 var eight_ball_table = new THREE.Group();
+var colBounds = new bounds (-1.33, -0.73, 1.33, 0.73); // bounds of table
 
 //eight_ball_table.add(floor);
 eight_ball_table.add(green_mat);
@@ -51,14 +53,20 @@ var ball_1 = new ball(1.0, 1.08, 0, '#FF0000');
 var ball_2 = new ball(1.1, 1.08, 0, '#FFFF00');
 var ball_3 = new ball(1.2, 1.08, 0, '#008000');
 var ball_4 = new ball(1.3, 1.08, 0, '#FF69B4');
-scene.add(white_ball.mesh);
-scene.add(ball_1.mesh); 
-scene.add(ball_2.mesh); 
-scene.add(ball_3.mesh); 
-scene.add(ball_4.mesh);
+
+balls.push(ball_1);
+balls.push(ball_2);
+balls.push(ball_3);
+balls.push(ball_4);
+balls.push(white_ball);
+
+balls.forEach(function(ball) {
+	scene.add(ball.mesh)
+	ball.velocity = new THREE.Vector3 (0.8, 0, 0.8)
+}, this);
 
 // add bounds to the pooltable
-var pooltablebounds = bounds (5,5,5,5);
+//var pooltablebounds = bounds (5,5,5,5);
 
 //Set the camera position
 camera.position.set(-2, 1.5, 1.5);
@@ -78,6 +86,11 @@ var axisHelper = new THREE.AxisHelper( 20 );
 scene.add( axisHelper );
 
 var render = function () {
+	var delta = clock.getDelta();
+	balls.forEach(function(ball) {
+		ball.update(delta, colBounds)
+	}, this);
+	
 	renderer.render( scene, camera );
 	requestAnimationFrame( render );
 };
