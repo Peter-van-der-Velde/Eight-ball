@@ -18,6 +18,9 @@
 				<div class="mask"></div>
 			</div>
 		</div>
+		<audio controls autoplay id="backgroundPlayer">
+			<source src="music/backgroundMusic.mp3" type="audio/mp3">
+		</audio>
 	</div>
   </body>
   <footer>
@@ -25,8 +28,11 @@
 		function playGame() {
 			var wrapper = document.getElementById("wrapper");
 			wrapper.style.display = "none";
-			
 		}
+		
+		var audioPlayer = document.getElementById("backgroundPlayer");
+		audioPlayer.volume = 0.1;
+		
 	</script>
 	<script src="js/three.min.js"></script>
     <script src="js/OrbitControls.js"></script>
