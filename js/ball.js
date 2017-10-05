@@ -9,7 +9,7 @@ class ball {
         this.position = new THREE.Vector3(x, y, z);
         this.velocity = new THREE.Vector3(0, 0, 0);
         this.acceleration = new THREE.Vector3(0, 0, 0);
-        this.friction = 1;//0.995;
+        this.friction = 0.995;
         this.restitution = 1; // bounciness of said ball
         this.size = 0.03;
         this.weight = 1;
@@ -44,8 +44,8 @@ class ball {
         // {
         //     distanceBalls = this.position.distanceTo(ball_2.position);
 
-        //     this.position.x += this.velocity.x * -(delta/100);
-        //     this.position.z += this.velocity.z * -(delta/100);
+        //     this.position.x += this.velocity.x * -(delta);
+        //     this.position.z += this.velocity.z * -(delta);
 
         //     count++;
         // }
@@ -117,14 +117,14 @@ class ball {
                     //this.position.x = balls[i].position.x += 0.1;
                     //this.velocity.multiplyScalar(-1);
                     //balls[i].velocity.multiplyScalar(-1);
-                    console.log("bam!" + this.position.distanceTo(balls[i].position));
+                    //console.log("bam!" + this.position.distanceTo(balls[i].position));
                     this.calcCollision(balls[i]);
                 }
             }
         }
         this.updatePosition(this.position)
         // console.log("p2: ");
-         console.log(this.mesh.position)
+        //console.log(this.mesh.position)
         // console.log("p: ");
         // console.log(this.position)
         // console.log("v: ");

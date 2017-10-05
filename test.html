@@ -5,10 +5,8 @@
     <style>
       html, body { margin: 0; padding: 0; overflow: hidden; }
     </style>
-	<link rel="stylesheet" type="text/css" href="css/main.css">
-	<link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'> 
-	
-	
+		<link rel="stylesheet" type="text/css" href="css/main.css">
+		<link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'> 	
   </head>
   <body>
 	<div id="wrapper">
@@ -24,24 +22,23 @@
 	</div>
   </body>
   <footer>
-	<script>
-		function playGame() {
-			var wrapper = document.getElementById("wrapper");
-			wrapper.style.display = "none";
-		}
-		
-		var audioPlayer = document.getElementById("backgroundPlayer");
-		audioPlayer.volume = 0.1;
-		
-	</script>
 	<script src="js/three.min.js"></script>
     <script src="js/OrbitControls.js"></script>
     <script src="js/vector3.js"></script>
     <script src="js/bounds.js"></script>
     <script src="js/ball.js"></script>
-	<script src="js/roomBuilder.js"></script>
+		<script src="js/roomBuilder.js"></script>
     <script src="js/textureBox.js"></script>
     <script src="js/lighting.js"></script>
-	<script type="module" src="js/main.js"></script>
+		<script type="module" src="js/main.js"></script>
+		<script>
+			function playGame() {
+				var wrapper = document.getElementById("wrapper");
+				wrapper.style.display = "none";
+			}
+			//wrapper.style.display = "none"; // for debug purposes
+			var audioPlayer = document.getElementById("backgroundPlayer");
+			audioPlayer.volume = 0.1;	
+		</script>
   </footer>
 </html>
