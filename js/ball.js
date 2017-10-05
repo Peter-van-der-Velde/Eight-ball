@@ -21,9 +21,11 @@ class ball {
 
         var billiardBallSize = new THREE.SphereGeometry(this.size);
         this.mesh = new THREE.Mesh(billiardBallSize, billiardBallMaterial);
+        //add shadows
+        this.mesh.castShadow = true;
+        this.mesh.receiveShadow = true;
 
         this.mesh.position.set(this.position.x, this.position.y, this.position.z)
-
     }
 
     updatePosition(newPosition) {
@@ -39,16 +41,16 @@ class ball {
     calcCollision(ball_2, delta) {
         var distanceBalls = this.position.distanceTo(ball_2.position);
 
-        var count = 0;
-        // while(distanceBalls <= (this.size + ball_2.size) && count <= 100)
-        // {
-        //     distanceBalls = this.position.distanceTo(ball_2.position);
+        let count = 0;
+        while(distanceBalls <= (this.size + ball_2.size) && count <= 100)
+        {
+            distanceBalls = this.position.distanceTo(ball_2.position);
 
-        //     this.position.x += this.velocity.x * -(delta);
-        //     this.position.z += this.velocity.z * -(delta);
+            this.position.x += this.velocity.x * -delta;
+            this.position.z += this.velocity.z * -delta;
 
-        //     count++;
-        // }
+            count++;
+        }
         var dx = this.position.x - ball_2.position.x;
         var dz = this.position.z - ball_2.position.z;
 
@@ -99,7 +101,7 @@ class ball {
             this.position.x = bounds.x;
             this.velocity.x *= -this.restitution;
         } else if (this.position.x > bounds.cx) {
-            this.position.x = bounds.cx - this.size;
+            this.position.x = bounds.cx - (this.size/100);
             this.velocity.x *= -this.restitution;            
         }
 
@@ -107,7 +109,7 @@ class ball {
             this.position.z = bounds.z;
             this.velocity.z *= -this.restitution;
         } else if (this.position.z > bounds.cz) {
-            this.position.z = bounds.cz - this.size;
+            this.position.z = bounds.cz - (this.size/100);
             this.velocity.z *= -this.restitution;     
         }
 
@@ -118,7 +120,7 @@ class ball {
                     //this.velocity.multiplyScalar(-1);
                     //balls[i].velocity.multiplyScalar(-1);
                     //console.log("bam!" + this.position.distanceTo(balls[i].position));
-                    this.calcCollision(balls[i]);
+                    this.calcCollision(balls[i], dt);
                 }
             }
         }

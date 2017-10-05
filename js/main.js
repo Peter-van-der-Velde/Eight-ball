@@ -5,8 +5,12 @@ var aspect = window.innerWidth / window.innerHeight;
 var camera = new THREE.PerspectiveCamera( 75, aspect, 0.1, 1000 );
 var renderer = new THREE.WebGLRenderer({antialias:true});
 renderer.setSize( window.innerWidth, window.innerHeight );
+renderer.shadowMapEnabled = true;
+// to antialias the shadow
+renderer.shadowMapType = THREE.PCFSoftShadowMap;
 var renderCanv = document.body.appendChild( renderer.domElement );
 console.log(renderer);
+
 var clock = new THREE.Clock();
 var controls = new THREE.OrbitControls(camera, renderer.domElement);
 controls.target.set(0, 0, 0);
@@ -83,7 +87,7 @@ balls.push(ball_14);
 balls.push(ball_15);
 balls.push(white_ball);
 
-white_ball.velocity = new THREE.Vector3 (1.6, 0, 0)
+white_ball.velocity = new THREE.Vector3 (3, 0, 0)
 
 balls.forEach(function(ball) {
 	scene.add(ball.mesh)
@@ -100,8 +104,8 @@ camera.lookAt(green_mat.position);
 // add lights to scene
 pointLight.lookAt( green_mat );
 scene.add(pointLight);
-Light.lookAt ( green_mat );
-scene.add(Light);
+//Light.lookAt ( green_mat );
+//scene.add(Light);
 scene.add(LightA);
 
 // add grid and axis

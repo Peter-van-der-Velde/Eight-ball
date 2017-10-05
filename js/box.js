@@ -7,7 +7,8 @@ export class box {
 
 		var boxSize = new THREE.BoxGeometry(height,width,depth);
 		var box = new THREE.Mesh(boxSize, boxMaterial);
-
+		box.castShadow = true;
+		box.receiveShadow = true;
 		box.position.set(x, y, z);
 		return box;
     }
