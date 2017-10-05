@@ -33,7 +33,21 @@ class ball {
     }
 
     calcCollision(ball_1, ball_2) {
-        console.log(this)
+    //     console.log(this)
+    //     var Pix = ball_1.velocity.x * ball_1.weight;
+    //     var Piz = ball_1.velocity.z * ball_1.weight;
+
+    //     var p1x = ball_1.position.x;
+    //     var p1z = ball_1.position.z;
+
+    //     var p2x = ball_2.position.x;
+    //     var p2z = ball_2.position.z;
+
+    //     var gradient =  (p1z - p2z) / (p1x -p2x);
+    //     var rightAngled =
+    n = new THREE.Vector3((ball_1.position.x - ball_2.position.x), (ball_1.position.y - ball_2.position.y), (ball_1.position.z - ball_2.position.z));   
+    n.normalize();
+    
     }
 
     update(dt, bounds) {    // dt is the difference in time 
@@ -67,9 +81,11 @@ class ball {
         for (let i = 0; i < balls.length; i++) {
             if (balls[i] != this) {
                 if (this.position.distanceTo(balls[i].position) < this.size*2) {
+                    //this.position.x = balls[i].position.x += 0.1;
                     this.velocity.multiplyScalar(-1);
+                    balls[i].velocity.multiplyScalar(-1);
                     console.log("bam!" + this.position.distanceTo(balls[i].position));
-                    this.calcCollision(this, balls[i]);
+                    //this.calcCollision(this, balls[i]);
                 }
             }
         }
