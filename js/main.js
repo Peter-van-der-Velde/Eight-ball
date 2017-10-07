@@ -1,5 +1,6 @@
 import {box} from './box.js';
 
+
 var scene = new THREE.Scene();
 var aspect = window.innerWidth / window.innerHeight;
 var camera = new THREE.PerspectiveCamera( 75, aspect, 0.1, 1000 );
@@ -10,7 +11,6 @@ renderer.shadowMap.type = THREE.PCFSoftShadowMap; // to antialias the shadow
 var renderCanv = document.getElementById("renderCanvasDiv").appendChild( renderer.domElement );
 renderCanv.id = "renderCanvas";
 console.log(renderer);
-
 var clock = new THREE.Clock();
 var controls = new THREE.OrbitControls(camera, renderer.domElement);
 controls.target.set(0, 0, 0);
@@ -38,8 +38,6 @@ var leg_3 = new box(-1.4, 0.5, 0.8, '#835C3B', 0.1, 1, 0.1);
 var leg_4 = new box(-1.4, 0.5, -0.8, '#835C3B', 0.1, 1, 0.1);
 var eight_ball_table = new THREE.Group();
 var colBounds = new bounds (-1.33, -0.73, 1.33, 0.73); // bounds of table
-
-//eight_ball_table.add(floor);
 eight_ball_table.add(green_mat);
 eight_ball_table.add(wall_1);
 eight_ball_table.add(wall_2);
@@ -69,7 +67,6 @@ var ball_12 = new Ball(0.74, 1.08, 0.06, '#C0C0C0');
 var ball_13 = new Ball(0.74, 1.08, -0.06, '#008080');
 var ball_14 = new Ball(0.74, 1.08, 0.12, '#FFFF00');
 var ball_15 = new Ball(0.74, 1.08, -0.12, '#808000');
-
 
 balls.push(ball_1);
 balls.push(ball_2);
@@ -107,10 +104,68 @@ scene.add(grid);
 var axisHelper = new THREE.AxisHelper( 20 );
 scene.add( axisHelper );
 
-// add players
+// add players to game
 var player1 = new Player("George"); 
 var player2 = new Player("George2");
+var players = [];
+players.push(player1);
+players.push(player2);
 
+var turn = 0;
+var playerTurn = 0;
+var players = players;
+var x;
+var z;
+var amountOfBalls = balls.length;
+	
+function nextTurn() {
+	this.turn++;
+	if (this.players.length < players.length())
+		this.playerTurn++;
+	else
+		this.playerTurn = 0;
+}
+
+/**
+ *
+ */
+function cameraOverview() {
+
+}
+	
+function calcScore() {
+	//let score = (this.amountOfBalls - amountOfBallsNow) * 100;
+	//return score
+}
+
+/**
+ * update the GUI elements
+ */
+function updateUI() {
+
+}
+
+/** 
+ * update all the values it can get from the html DOM 
+ */
+function updateValues() {
+	x = document.getElementById("x").value;
+	z = document.getElementById("z").value;
+}
+
+function aim() {
+	document.getElementById("submit").onclick = function () {
+		white_ball.fire(new THREE.Vector3(x, 0, z));
+	}
+}
+
+function start() {
+		aim()
+}
+
+/**
+ * our render function it renders our scene
+ */
 var render = function () {
 	var delta = clock.getDelta();
 	balls.forEach(function(Ball) {
@@ -122,3 +177,4 @@ var render = function () {
 };
 
 render();
+start();

@@ -1,4 +1,4 @@
-var balls = new Array();
+var balls = [];
 
 /**
  * a ball class for the billiard balls

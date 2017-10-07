@@ -35,3 +35,15 @@ body {
 #endScreen {
     position: hidden;
 }
+
+#FireBall {
+    position: absolute;
+    background-color: white;
+    color: black;
+    float: left;
+    left: 1em;
+    top: 12em;
+    height: 10em;
+    width: 10em;
+    z-index: 10;
+}

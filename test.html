@@ -31,6 +31,7 @@
 		<script src="js/textureBox.js"></script>
 		<script src="js/lighting.js"></script>
 		<script src="js/player.js"></script>
+		<script src="js/game.js"></script>
 		<script type="module" src="js/main.js"></script>
 		<!-- UI -->
 		<div id="renderCanvasDiv">
@@ -46,6 +47,17 @@
 		</div>
 		<div id="endScreen">
 				<p>you won!</p>
+		</div>
+		<div id="FireBall">
+			<form action="/action_page.php">
+				Fire X:<br>
+				<input type="number" id="x" value="0">
+				<br>
+				Fire Z:<br>
+				<input type="number" id="z" value="0">
+				<br><br>
+				<input type="button" id="submit" value="Submit">
+			</form> 
 		</div>
 		<script>
 				function playGame() {
