@@ -132,6 +132,15 @@ function nextTurn() {
 function cameraOverview() {
 
 }
+
+function ballsHaveStopped() {
+	for (let i = 0; i < balls.length; i++) {
+		console.log (balls[i].getTotalVelocity());
+		if (balls[i].getTotalVelocity() >= 0.017)
+			return false;
+	}
+	return true;
+}
 	
 function calcScore() {
 	//let score = (this.amountOfBalls - amountOfBallsNow) * 100;
@@ -155,7 +164,9 @@ function updateValues() {
 
 function aim() {
 	document.getElementById("submit").onclick = function () {
-		white_ball.fire(new THREE.Vector3(x, 0, z));
+		updateValues();
+		if (ballsHaveStopped())
+			white_ball.fire(new THREE.Vector3(x, 0, z));
 	}
 }
 
