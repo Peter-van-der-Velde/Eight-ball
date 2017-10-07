@@ -5,9 +5,9 @@ var aspect = window.innerWidth / window.innerHeight;
 var camera = new THREE.PerspectiveCamera( 75, aspect, 0.1, 1000 );
 var renderer = new THREE.WebGLRenderer({antialias:true});
 renderer.setSize( window.innerWidth, window.innerHeight );
-renderer.shadowMapEnabled = true;
+renderer.shadowMap.enabled = true;
 // to antialias the shadow
-renderer.shadowMapType = THREE.PCFSoftShadowMap;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 var renderCanv = document.body.appendChild( renderer.domElement );
 console.log(renderer);
 
@@ -52,7 +52,7 @@ eight_ball_table.castShadow = true;
 scene.add(eight_ball_table);
 
 //Creating the balls (lol)
-var white_ball = new ball(-1.0, 1.08, 0, '#FFFFFF');
+var white_ball = new whiteBall(-1.0, 1.08, 0, '#FFFFFF');
 var ball_1 = new ball(0.5, 1.08, 0, '#00FFFF');
 var ball_2 = new ball(0.56, 1.08, 0.03, '#0000FF');
 var ball_3 = new ball(0.56, 1.08, -0.03, '#FF00FF');

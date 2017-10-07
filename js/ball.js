@@ -9,7 +9,7 @@ class ball {
         this.position = new THREE.Vector3(x, y, z);
         this.velocity = new THREE.Vector3(0, 0, 0);
         this.acceleration = new THREE.Vector3(0, 0, 0);
-        this.friction = 0.995;
+        this.friction = 0.992;
         this.restitution = 1; // bounciness of said ball
         this.size = 0.03;
         this.weight = 1;
@@ -66,22 +66,6 @@ class ball {
 
         ball_2.velocity.x = totalVelocityA * Math.cos(angleA - contactAngle) * Math.cos(contactAngle) + totalVelocityB * Math.sin(angleB - contactAngle) * Math.cos(contactAngle + (Math.PI / 2));
         ball_2.velocity.z = totalVelocityA * Math.cos(angleA - contactAngle) * Math.sin(contactAngle) + totalVelocityB * Math.sin(angleB - contactAngle) * Math.sin(contactAngle + (Math.PI / 2));
-        
-
-        //     console.log(this)
-        //     var Pix = ball_1.velocity.x * ball_1.weight;
-        //     var Piz = ball_1.velocity.z * ball_1.weight;
-
-        //     var p1x = ball_1.position.x;
-        //     var p1z = ball_1.position.z;
-
-        //     var p2x = ball_2.position.x;
-        //     var p2z = ball_2.position.z;
-
-        //     var gradient =  (p1z - p2z) / (p1x -p2x);
-        //     var rightAngled =
-        //n = new THREE.Vector3((ball_1.position.x - ball_2.position.x), (ball_1.position.y - ball_2.position.y), (ball_1.position.z - ball_2.position.z));   
-        //n.normalize();
     
     }
 
@@ -116,24 +100,10 @@ class ball {
         for (let i = 0; i < balls.length; i++) {
             if (balls[i] != this) {
                 if (this.position.distanceTo(balls[i].position) < this.size*2) {
-                    //this.position.x = balls[i].position.x += 0.1;
-                    //this.velocity.multiplyScalar(-1);
-                    //balls[i].velocity.multiplyScalar(-1);
-                    //console.log("bam!" + this.position.distanceTo(balls[i].position));
                     this.calcCollision(balls[i], dt);
                 }
             }
         }
         this.updatePosition(this.position)
-        // console.log("p2: ");
-        //console.log(this.mesh.position)
-        // console.log("p: ");
-        // console.log(this.position)
-        // console.log("v: ");
-        // console.log(this.velocity)
-        // console.log("dt: ")
-        // console.log(dt)
-        // console.log("bd: ")
-        // console.log(bounds)
     }
 }
