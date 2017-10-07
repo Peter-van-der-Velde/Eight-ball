@@ -5,13 +5,13 @@ let roomItems = new THREE.Group();		//all tiles combined
  * @param {number} length the length of the room
  * @param {number} width the width of the room
  * @param {number} height the height of the room
- * @param {Texture} floorTexture 
- * @param {Texture} wallTexture 
+ * @param {Texture} floorTexture texture of the floor
+ * @param {Texture} wallTexture texture of the wall
  */
 let roomBuilder = function (length, width, height, floorTexture, wallTexture) {
 	let startX = (length / 2) * -1;
 	let startZ = (width / 2) * -1;
-	let floor; 								//a single floor tile
+	let floor;	//a single floor tile
 	
 	for(let localZ = 0; localZ <= width; localZ++ ){
 		for(let localX = 0; localX <= length; localX++){

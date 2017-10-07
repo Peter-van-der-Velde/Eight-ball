@@ -2,7 +2,7 @@
  * 
  * @param {string} name name of the player
  */
-class player {
+class Player {
 
     constructor(name) {
         this.name = name;

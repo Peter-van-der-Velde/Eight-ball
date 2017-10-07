@@ -1,13 +1,13 @@
 /**
  * a class for the white balls who one might fire
  * @class
- * @extends ball
+ * @extends Ball
  * @param {number} x x position of the ball
  * @param {number} y y position of the ball
  * @param {number} z z position of the ball
  * @param {number} constructorColor color of the ball 
  */
-class whiteBall extends ball {
+class WhiteBall extends Ball {
     
     /**
      * hehehe

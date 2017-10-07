@@ -31,3 +31,7 @@ body {
     z-index: 0;
     position: absolute;
 }
+
+#endScreen {
+    position: hidden;
+}

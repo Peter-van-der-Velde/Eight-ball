@@ -53,22 +53,22 @@ eight_ball_table.castShadow = true;
 scene.add(eight_ball_table);
 
 //Creating the balls (lol)
-var white_ball = new whiteBall(-1.0, 1.08, 0, '#FFFFFF');
-var ball_1 = new ball(0.5, 1.08, 0, '#00FFFF');
-var ball_2 = new ball(0.56, 1.08, 0.03, '#0000FF');
-var ball_3 = new ball(0.56, 1.08, -0.03, '#FF00FF');
-var ball_4 = new ball(0.62, 1.08, 0, '#000000');
-var ball_5 = new ball(0.62, 1.08, 0.06, '#008000');
-var ball_6 = new ball(0.62, 1.08, -0.06, '#00FF00');
-var ball_7 = new ball(0.68, 1.08, 0.03, '#800000');
-var ball_8 = new ball(0.68, 1.08, -0.03, '#000080');
-var ball_9 = new ball(0.68, 1.08, 0.09, '#808000');
-var ball_10 = new ball(0.68, 1.08, -0.09, '#800080');
-var ball_11 = new ball(0.74, 1.08, 0, '#FF0000');
-var ball_12 = new ball(0.74, 1.08, 0.06, '#C0C0C0');
-var ball_13 = new ball(0.74, 1.08, -0.06, '#008080');
-var ball_14 = new ball(0.74, 1.08, 0.12, '#FFFF00');
-var ball_15 = new ball(0.74, 1.08, -0.12, '#808000');
+var white_ball = new WhiteBall(-1.0, 1.08, 0, '#FFFFFF');
+var ball_1 = new Ball(0.5, 1.08, 0, '#00FFFF');
+var ball_2 = new Ball(0.56, 1.08, 0.03, '#0000FF');
+var ball_3 = new Ball(0.56, 1.08, -0.03, '#FF00FF');
+var ball_4 = new Ball(0.62, 1.08, 0, '#000000');
+var ball_5 = new Ball(0.62, 1.08, 0.06, '#008000');
+var ball_6 = new Ball(0.62, 1.08, -0.06, '#00FF00');
+var ball_7 = new Ball(0.68, 1.08, 0.03, '#800000');
+var ball_8 = new Ball(0.68, 1.08, -0.03, '#000080');
+var ball_9 = new Ball(0.68, 1.08, 0.09, '#808000');
+var ball_10 = new Ball(0.68, 1.08, -0.09, '#800080');
+var ball_11 = new Ball(0.74, 1.08, 0, '#FF0000');
+var ball_12 = new Ball(0.74, 1.08, 0.06, '#C0C0C0');
+var ball_13 = new Ball(0.74, 1.08, -0.06, '#008080');
+var ball_14 = new Ball(0.74, 1.08, 0.12, '#FFFF00');
+var ball_15 = new Ball(0.74, 1.08, -0.12, '#808000');
 
 
 balls.push(ball_1);
@@ -107,10 +107,14 @@ scene.add(grid);
 var axisHelper = new THREE.AxisHelper( 20 );
 scene.add( axisHelper );
 
+// add players
+var player1 = new Player("George"); 
+var player2 = new Player("George2");
+
 var render = function () {
 	var delta = clock.getDelta();
-	balls.forEach(function(ball) {
-		ball.update(delta, colBounds)
+	balls.forEach(function(Ball) {
+		Ball.update(delta, colBounds)
 	}, this);
 	
 	renderer.render( scene, camera );

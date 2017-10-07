@@ -8,7 +8,7 @@ var balls = new Array();
  * @param {number} z z position of the ball
  * @param {number} constructorColor color of the ball 
  */
-class ball {
+class Ball {
 
     constructor(x, y, z, constructorColor){
 
