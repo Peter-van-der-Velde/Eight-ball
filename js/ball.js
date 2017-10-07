@@ -16,7 +16,7 @@ class Ball {
         this.position = new THREE.Vector3(x, y, z);
         this.velocity = new THREE.Vector3(0, 0, 0);
         this.acceleration = new THREE.Vector3(0, 0, 0);
-        this.friction = 0.990;
+        this.friction = 0.995;
 
         this.restitution = 1; // bounciness of said ball
         this.size = 0.03;
@@ -65,11 +65,20 @@ class Ball {
         while(distanceBalls <= (this.size + ball_2.size) && count <= 100)
         {
             distanceBalls = this.position.distanceTo(ball_2.position);
-
+            
             this.position.x += this.velocity.x * -delta;
             this.position.z += this.velocity.z * -delta;
 
-            count++;
+            // this is needed because else the first shot get`s fucked up.
+            for (let i = 0; i < balls.length; i++) {
+                if (balls[i] != this) {
+                    if (this.position.distanceTo(balls[i].position) < this.size*2) {
+                        count++;
+                        continue;
+                    }
+                }
+            }
+            break;
         }
         var dx = this.position.x - ball_2.position.x;
         var dz = this.position.z - ball_2.position.z;

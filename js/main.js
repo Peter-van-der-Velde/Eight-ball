@@ -117,7 +117,8 @@ var players = players;
 var x;
 var z;
 var amountOfBalls = balls.length;
-	
+
+
 function nextTurn() {
 	this.turn++;
 	if (this.players.length < players.length())
