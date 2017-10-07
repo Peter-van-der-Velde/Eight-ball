@@ -13,6 +13,7 @@ class ball {
         this.velocity = new THREE.Vector3(0, 0, 0);
         this.acceleration = new THREE.Vector3(0, 0, 0);
         this.friction = 0.990;
+
         this.restitution = 1; // bounciness of said ball
         this.size = 0.03;
         this.weight = 1;
@@ -69,7 +70,7 @@ class ball {
 
         ball_2.velocity.x = totalVelocityA * Math.cos(angleA - contactAngle) * Math.cos(contactAngle) + totalVelocityB * Math.sin(angleB - contactAngle) * Math.cos(contactAngle + (Math.PI / 2));
         ball_2.velocity.z = totalVelocityA * Math.cos(angleA - contactAngle) * Math.sin(contactAngle) + totalVelocityB * Math.sin(angleB - contactAngle) * Math.sin(contactAngle + (Math.PI / 2));
-          
+
     }
 
     update(dt, bounds) {    // dt is the difference in time 
@@ -103,24 +104,10 @@ class ball {
         for (let i = 0; i < balls.length; i++) {
             if (balls[i] != this) {
                 if (this.position.distanceTo(balls[i].position) < this.size*2) {
-                    //this.position.x = balls[i].position.x += 0.1;
-                    //this.velocity.multiplyScalar(-1);
-                    //balls[i].velocity.multiplyScalar(-1);
-                    //console.log("bam!" + this.position.distanceTo(balls[i].position));
                     this.calcCollision(balls[i], dt);
                 }
             }
         }
         this.updatePosition(this.position)
-        // console.log("p2: ");
-        //console.log(this.mesh.position)
-        // console.log("p: ");
-        // console.log(this.position)
-        // console.log("v: ");
-        // console.log(this.velocity)
-        // console.log("dt: ")
-        // console.log(dt)
-        // console.log("bd: ")
-        // console.log(bounds)
     }
 }

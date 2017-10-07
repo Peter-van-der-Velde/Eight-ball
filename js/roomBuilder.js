@@ -1,4 +1,4 @@
-var roomItems = new THREE.Group();		//all tiles combined
+let roomItems = new THREE.Group();		//all tiles combined
 
 /**
  * builds the room around the pooltable room

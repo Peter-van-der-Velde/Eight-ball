@@ -22,7 +22,6 @@ var tableTexture = loader.load("img/green_mat.png");
 var wallTexture = loader.load("img/wallBackground.png");
 
 //Room Textures
-//roomBuilder(20, 20, floorTexture);
 roomBuilder(10, 10, 10, floorTexture, wallTexture);
 scene.add(roomItems);
 
@@ -54,7 +53,7 @@ eight_ball_table.castShadow = true;
 scene.add(eight_ball_table);
 
 //Creating the balls (lol)
-var white_ball = new ball(-1.0, 1.08, 0, '#FFFFFF');
+var white_ball = new whiteBall(-1.0, 1.08, 0, '#FFFFFF');
 var ball_1 = new ball(0.5, 1.08, 0, '#00FFFF');
 var ball_2 = new ball(0.56, 1.08, 0.03, '#0000FF');
 var ball_3 = new ball(0.56, 1.08, -0.03, '#FF00FF');
