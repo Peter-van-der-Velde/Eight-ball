@@ -19,9 +19,10 @@ controls.target.set(0, 0, 0);
 var loader = new THREE.TextureLoader();
 var floorTexture = loader.load("img/floor.png");
 var tableTexture = loader.load("img/green_mat.png");
+var wallTexture = loader.load("img/wallBackground.png");
 
 //Room Textures
-roomBuilder(20, 20, floorTexture);
+roomBuilder(10, 10, 10, floorTexture, wallTexture);
 scene.add(roomItems);
 
 //Table
