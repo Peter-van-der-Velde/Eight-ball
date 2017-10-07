@@ -3,6 +3,10 @@ var balls = new Array();
 /**
  * a ball class for the billiard balls
  * @class
+ * @param {number} x x position of the ball
+ * @param {number} y y position of the ball
+ * @param {number} z z position of the ball
+ * @param {number} constructorColor color of the ball 
  */
 class ball {
 
@@ -32,16 +36,28 @@ class ball {
         this.mesh.position.set(this.position.x, this.position.y, this.position.z)
     }
 
-    updatePosition(newPosition) {
+    /**
+     * Updates the position of the mesh
+     * @param {THREE.Vector3} newPosition 
+     */
+    updateMesh(newPosition) {
         this.mesh.position.x = newPosition.x;
         this.mesh.position.y = newPosition.y;
         this.mesh.position.z = newPosition.z;        
     }
 
+    /**
+     * Calculates the total velocity
+     */
     getTotalVelocity() {
         return Math.sqrt(Math.pow(this.velocity.x, 2) + Math.pow(this.velocity.z, 2));
     }
 
+    /**
+     * Calculates the collision between this ball and another ball
+     * @param {ball} ball_2 the other ball
+     * @param {number} delta 
+     */
     calcCollision(ball_2, delta) {
         var distanceBalls = this.position.distanceTo(ball_2.position);
 
@@ -73,7 +89,12 @@ class ball {
 
     }
 
-    update(dt, bounds) {    // dt is the difference in time 
+    /**
+     * updates the position of the ball
+     * @param {number} dt the difference in time 
+     * @param {bounds} bounds 
+     */
+    update(dt, bounds) { 
         
         this.velocity.x = (this.velocity.x + this.acceleration.x) * this.friction;
         this.velocity.y = (this.velocity.y + this.acceleration.y) * this.friction;
@@ -108,6 +129,6 @@ class ball {
                 }
             }
         }
-        this.updatePosition(this.position)
+        this.updateMesh(this.position)
     }
 }

@@ -3,44 +3,53 @@
   <head>
     <title>Eigth ball test version 0.18a</title>
     <style>
-      html, body { margin: 0; padding: 0; overflow: hidden; }
+      html, body { margin: 0; padding: 0; overflow: hidden; background-color: transparent; }
     </style>
 		<link rel="stylesheet" type="text/css" href="css/main.css">
+		<link rel="stylesheet" type="text/css" href="css/ui.css">
 		<link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
   </head>
-  <body>
-	<div id="wrapper">
-		<div class="center-wrap">
-			<div class="button" id="button">
-				<a onclick='playGame()' href="#">Play some pool<span class="shift">›</span></a>
-				<div class="mask"></div>
+	<body>
+		<div id="wrapper">
+			<div class="center-wrap">
+				<div class="button" id="button">
+					<a onclick='playGame()' href="#">Play some pool<span class="shift">›</span></a>
+					<div class="mask"></div>
+				</div>
 			</div>
+			<audio controls autoplay id="backgroundPlayer">
+		  	<source src="music/backgroundMusic.mp3" type="audio/mp3">
+			</audio>
 		</div>
-		<audio controls autoplay id="backgroundPlayer">
-		    <source src="music/backgroundMusic.mp3" type="audio/mp3">
-		</audio>
-	</div>
-  </body>
-<footer>
 		<script src="js/three.min.js"></script>
-    <script src="js/OrbitControls.js"></script>
-    <script src="js/vector3.js"></script>
-    <script src="js/bounds.js"></script>
+		<script src="js/OrbitControls.js"></script>
+		<script src="js/vector3.js"></script>
+		<script src="js/bounds.js"></script>
 		<script src="js/ball.js"></script>
 		<script src="js/whiteBall.js"></script>
 		<script src="js/roomBuilder.js"></script>
-    <script src="js/textureBox.js"></script>
+		<script src="js/textureBox.js"></script>
 		<script src="js/lighting.js"></script>
 		<script src="js/player.js"></script>
 		<script type="module" src="js/main.js"></script>
+		<!-- UI -->
+		<div id="renderCanvasDiv">
+
+		</div>
+		<div id="p1stats">
+			<p>p1</p>
+		</div>
+		<div id="p2stats">
+			<p>p2</p>
+		</div>
 		<script>
-			function playGame() {
-				var wrapper = document.getElementById("wrapper");
-				wrapper.style.display = "none";
-			}
-			wrapper.style.display = "none"; // for debug purposes
-			var audioPlayer = document.getElementById("backgroundPlayer");
-			audioPlayer.volume = 0.1;
-		</script>
-  </footer>
+				function playGame() {
+					var wrapper = document.getElementById("wrapper");
+					wrapper.style.display = "none";
+				}
+				wrapper.style.display = "none"; // for debug purposes
+				var audioPlayer = document.getElementById("backgroundPlayer");
+				audioPlayer.volume = 0.1;
+			</script>
+	</body>
 </html>

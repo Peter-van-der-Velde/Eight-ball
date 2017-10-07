@@ -1,0 +1,33 @@
+body {
+    background-color: transparent;
+}
+
+#p1stats {
+    position: absolute;
+    background-color: white;
+    color: black;
+    float: left;
+    left: 1em;
+    top: 1em;
+    height: 10em;
+    width: 10em;
+    z-index: 10;
+}
+
+#p2stats {
+    position: absolute;
+    right: 1px;
+    background-color: white;
+    color: black;
+    float: right;
+    right: 1em;
+    top: 1em;
+    height: 10em;
+    width: 10em;
+    z-index: 10;
+}
+
+#renderCanvas {
+    z-index: 0;
+    position: absolute;
+}
