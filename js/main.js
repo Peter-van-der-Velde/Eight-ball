@@ -5,9 +5,9 @@ var aspect = window.innerWidth / window.innerHeight;
 var camera = new THREE.PerspectiveCamera( 75, aspect, 0.1, 1000 );
 var renderer = new THREE.WebGLRenderer({antialias:true});
 renderer.setSize( window.innerWidth, window.innerHeight );
-renderer.shadowMapEnabled = true;
+renderer.shadowMap.enabled = true;
 // to antialias the shadow
-renderer.shadowMapType = THREE.PCFSoftShadowMap;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 var renderCanv = document.body.appendChild( renderer.domElement );
 console.log(renderer);
 
@@ -19,9 +19,11 @@ controls.target.set(0, 0, 0);
 var loader = new THREE.TextureLoader();
 var floorTexture = loader.load("img/floor.png");
 var tableTexture = loader.load("img/green_mat.png");
+var wallTexture = loader.load("img/wallBackground.png");
 
 //Room Textures
-roomBuilder(20, 20, floorTexture);
+//roomBuilder(20, 20, floorTexture);
+roomBuilder(10, 10, 10, floorTexture, wallTexture);
 scene.add(roomItems);
 
 //Table
