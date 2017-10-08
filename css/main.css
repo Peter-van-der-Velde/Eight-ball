@@ -142,6 +142,11 @@ textarea {
 }
 
 
+#renderCanvasDiv canvas{
+	tabindex = 1000;
+}
+
+
 .mutingButtons{
 	right:0;
 	bottom:0;
