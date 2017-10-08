@@ -46,6 +46,8 @@ eight_ball_table.add(wall_2);
 eight_ball_table.add(wall_3);
 eight_ball_table.add(wall_4);
 eight_ball_table.add(cylinder_1.mesh);
+eight_ball_table.add(wall_5);
+eight_ball_table.add(wall_6);
 eight_ball_table.add(leg_1);
 eight_ball_table.add(leg_2);
 eight_ball_table.add(leg_3);
@@ -150,6 +152,20 @@ function calcScore() {
 	//let score = (this.amountOfBalls - amountOfBallsNow) * 100;
 	//return score
 }
+
+
+//Auto resizer when window size changes
+window.addEventListener( 'resize', onWindowResize, false );
+
+function onWindowResize(){
+
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+
+    renderer.setSize( window.innerWidth, window.innerHeight );
+
+}
+
 
 /**
  * update the GUI elements
