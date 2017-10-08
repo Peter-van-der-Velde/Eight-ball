@@ -33,7 +33,7 @@ body {
 }
 
 #endScreen {
-    position: hidden;
+    visibility: hidden;
 }
 
 #FireBall {
