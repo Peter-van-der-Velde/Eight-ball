@@ -27,57 +27,6 @@ var tableEdgeTexture = loader.load("img/edge.png");
 roomBuilder(10, 10, 10, floorTexture, wallTexture);
 scene.add(roomItems);
 
-//Table
-// x, y, z, color, width, height, depth
-var green_mat = new textureBox(0, 1, 0, tableTexture,2.8 , 0.1, 1.6);
-var wall_1 = new textureBox(1.4, 1, 0, tableEdgeTexture, 0.1, 0.2, 1.3); //1.7
-var wall_2 = new textureBox(-1.4, 1, 0, tableEdgeTexture, 0.1, 0.2, 1.3); //1.7
-var wall_3 = new textureBox(0.67, 1, 0.8, tableEdgeTexture, 1.1, 0.2, 0.1); //2.7
-var wall_4 = new textureBox(-0.67, 1, 0.8, tableEdgeTexture, 1.1, 0.2, 0.1); //2.7
-var wall_5 = new textureBox(0.67, 1, -0.8, tableEdgeTexture, 1.1, 0.2, 0.1); //2.7
-var wall_6 = new textureBox(-0.67, 1, -0.8, tableEdgeTexture, 1.1, 0.2, 0.1); //2.7
-var cylinder_1 = new cylinder(0, 1, 0.85, '#000000', 0.2, 0.12, 0.12);
-var cylinder_2 = new cylinder(0, 1, -0.85, '#000000', 0.2, 0.12, 0.12);
-var cylinder_3 = new cylinder(1.35, 1, 0.8, '#000000', 0.2, 0.12, 0.12);
-var cylinder_4 = new cylinder(1.35, 1, -0.8, '#000000', 0.2, 0.12, 0.12);
-var cylinder_5 = new cylinder(-1.35, 1, 0.8, '#000000', 0.2, 0.12, 0.12);
-var cylinder_6 = new cylinder(-1.35, 1, -0.8, '#000000', 0.2, 0.12, 0.12);
-var poolCue = new cylinder(0, 1, 0, '#FFF', 1.8, 0.010, 0.020);
-var leg_1 = new box(1.4, 0.5, -0.8, '#835C3B', 0.1, 1, 0.1);
-var leg_2 = new box(1.4, 0.5, 0.8, '#835C3B', 0.1, 1, 0.1);
-var leg_3 = new box(-1.4, 0.5, 0.8, '#835C3B', 0.1, 1, 0.1);
-var leg_4 = new box(-1.4, 0.5, -0.8, '#835C3B', 0.1, 1, 0.1);
-var eight_ball_table = new THREE.Group();
-var colBounds = new bounds (-1.33, -0.73, 1.33, 0.73); // bounds of table
-
-eight_ball_table.add(green_mat);
-eight_ball_table.add(wall_1);
-eight_ball_table.add(wall_2);
-eight_ball_table.add(wall_3);
-eight_ball_table.add(wall_4);
-eight_ball_table.add(cylinder_1.mesh);
-eight_ball_table.add(cylinder_2.mesh);
-eight_ball_table.add(cylinder_3.mesh);
-eight_ball_table.add(cylinder_4.mesh);
-eight_ball_table.add(cylinder_5.mesh);
-eight_ball_table.add(cylinder_6.mesh);
-eight_ball_table.add(poolCue.mesh);
-eight_ball_table.add(wall_5);
-eight_ball_table.add(wall_6);
-eight_ball_table.add(leg_1);
-eight_ball_table.add(leg_2);
-eight_ball_table.add(leg_3);
-eight_ball_table.add(leg_4);
-eight_ball_table.castShadow = true;
-scene.add(eight_ball_table);
-
-// array of cylinders
-var poolHoles = [cylinder_1, cylinder_2, cylinder_3, cylinder_4, cylinder_5, cylinder_6] 
-
-// poolcue
-poolCue.mesh.rotateZ(-0.55 * Math.PI);
-poolCue.mesh.position.set(-2, 1.25, 0);
-
 
 //Creating the balls (lol)
 var white_ball = new WhiteBall(-1.0, 1.08, 0, '#FFFFFF');
@@ -117,6 +66,65 @@ balls.push(white_ball);
 balls.forEach(function(ball) {
 	scene.add(ball.mesh)
 }, this);
+
+
+
+//Table
+// x, y, z, color, width, height, depth
+var green_mat = new textureBox(0, 1, 0, tableTexture,2.8 , 0.1, 1.6);
+var wall_1 = new textureBox(1.4, 1, 0, tableEdgeTexture, 0.1, 0.2, 1.3); //1.7
+var wall_2 = new textureBox(-1.4, 1, 0, tableEdgeTexture, 0.1, 0.2, 1.3); //1.7
+var wall_3 = new textureBox(0.67, 1, 0.8, tableEdgeTexture, 1.1, 0.2, 0.1); //2.7
+var wall_4 = new textureBox(-0.67, 1, 0.8, tableEdgeTexture, 1.1, 0.2, 0.1); //2.7
+var wall_5 = new textureBox(0.67, 1, -0.8, tableEdgeTexture, 1.1, 0.2, 0.1); //2.7
+var wall_6 = new textureBox(-0.67, 1, -0.8, tableEdgeTexture, 1.1, 0.2, 0.1); //2.7
+var cylinder_1 = new cylinder(0, 1, 0.85, '#000000', 0.2, 0.12, 0.12);
+var cylinder_2 = new cylinder(0, 1, -0.85, '#000000', 0.2, 0.12, 0.12);
+var cylinder_3 = new cylinder(1.35, 1, 0.8, '#000000', 0.2, 0.12, 0.12);
+var cylinder_4 = new cylinder(1.35, 1, -0.8, '#000000', 0.2, 0.12, 0.12);
+var cylinder_5 = new cylinder(-1.35, 1, 0.8, '#000000', 0.2, 0.12, 0.12);
+var cylinder_6 = new cylinder(-1.35, 1, -0.8, '#000000', 0.2, 0.12, 0.12);
+var poolCue = new cylinder(0, 1, 0, tableEdgeTexture, 1.4, 0.010, 0.020);
+var leg_1 = new box(1.4, 0.5, -0.8, '#835C3B', 0.1, 1, 0.1);
+var leg_2 = new box(1.4, 0.5, 0.8, '#835C3B', 0.1, 1, 0.1);
+var leg_3 = new box(-1.4, 0.5, 0.8, '#835C3B', 0.1, 1, 0.1);
+var leg_4 = new box(-1.4, 0.5, -0.8, '#835C3B', 0.1, 1, 0.1);
+var eight_ball_table = new THREE.Group();
+var colBounds = new bounds (-1.33, -0.73, 1.33, 0.73); // bounds of table
+
+eight_ball_table.add(green_mat);
+eight_ball_table.add(wall_1);
+eight_ball_table.add(wall_2);
+eight_ball_table.add(wall_3);
+eight_ball_table.add(wall_4);
+eight_ball_table.add(cylinder_1.mesh);
+eight_ball_table.add(cylinder_2.mesh);
+eight_ball_table.add(cylinder_3.mesh);
+eight_ball_table.add(cylinder_4.mesh);
+eight_ball_table.add(cylinder_5.mesh);
+eight_ball_table.add(cylinder_6.mesh);
+eight_ball_table.add(poolCue.mesh);
+eight_ball_table.add(wall_5);
+eight_ball_table.add(wall_6);
+eight_ball_table.add(leg_1);
+eight_ball_table.add(leg_2);
+eight_ball_table.add(leg_3);
+eight_ball_table.add(leg_4);
+eight_ball_table.castShadow = true;
+scene.add(eight_ball_table);
+
+// array of cylinders
+var poolHoles = [cylinder_1, cylinder_2, cylinder_3, cylinder_4, cylinder_5, cylinder_6] 
+
+function updatePoolCue(){
+	// poolcue
+	poolCue.mesh.rotateZ(-0.55 * Math.PI);
+	console.log("white_ball.x : " + white_ball.mesh.position.x);
+	console.log("white_ball.y : " + white_ball.mesh.position.y);
+	console.log("white_ball.z : " + white_ball.mesh.position.z);
+	poolCue.mesh.position.set(white_ball.mesh.position.x - 0.8, white_ball.mesh.position.y + 0.15, white_ball.mesh.position.z);
+}
+
 
 //Set the camera position
 camera.position.set(-2.5, 2.5, 0);
@@ -185,6 +193,7 @@ function ballsHaveStopped() {
 		if (balls[i].getTotalVelocity() >= 0.02)
 			return false;
 	}
+	updatePoolCue();
 	return true;
 }
 	
@@ -254,7 +263,7 @@ function aim() {
 }
 
 function start() {
-		aim()
+	aim()
 }
 
 /**
@@ -272,5 +281,6 @@ var render = function () {
 	requestAnimationFrame( render );
 };
 
+updatePoolCue();
 render();
 start();
