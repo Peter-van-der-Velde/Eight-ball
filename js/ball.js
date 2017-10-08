@@ -17,15 +17,26 @@ class Ball {
         this.velocity = new THREE.Vector3(0, 0, 0);
         this.acceleration = new THREE.Vector3(0, 0, 0);
         this.friction = 0.995;
+		this.initialVelocity = 1;
 
         this.restitution = 1; // bounciness of said ball
         this.size = 0.03;
         this.weight = 1;
-
-        var billiardBallMaterial = new THREE.MeshPhongMaterial({
-            fog : true,
-            color : constructorColor
-        });
+		
+		var checkString = "#";
+		var toString = constructorColor.toString();
+		if (toString.substr(0, 1) == checkString){
+			console.log("Color is used!");
+			var billiardBallMaterial = new THREE.MeshPhongMaterial({
+				color : constructorColor
+			});
+		}
+		else{
+			console.log("Image is used!");
+			var billiardBallMaterial = new THREE.MeshBasicMaterial( { map: constructorColor } );
+		}	
+		
+        
 
         var billiardBallSize = new THREE.SphereGeometry(this.size);
         this.mesh = new THREE.Mesh(billiardBallSize, billiardBallMaterial);
@@ -35,7 +46,12 @@ class Ball {
 
         this.mesh.position.set(this.position.x, this.position.y, this.position.z)
     }
-
+	
+	
+	
+	
+	
+	
     /**
      * Updates the position of the mesh
      * @param {THREE.Vector3} newPosition 

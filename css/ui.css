@@ -52,9 +52,12 @@ body {
     background-color: white;
     height: 100%;
     width: 100%;
-    /* position: absolute; */
-    z-index: 20;
+    position: absolute;
+    z-index: 9999;
     text-align: center;
     display: hidden;
-	position: hidden ; 
+	position: hidden;
+	margin: 0;
+	top:0;
+	visibility:hidden;
 }
