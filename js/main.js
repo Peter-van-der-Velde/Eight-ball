@@ -133,11 +133,6 @@ scene.add(eight_ball_table);
 var poolHoles = [cylinder_1, cylinder_2, cylinder_3, cylinder_4, cylinder_5, cylinder_6] 
 
 poolCue.mesh.rotateZ(-0.55 * Math.PI);
-function updatePoolCue(){
-	// poolcue
-	//poolCue.mesh.position.set(white_ball.mesh.position.x - 0.8, white_ball.mesh.position.y + 0.15, white_ball.mesh.position.z);
-}
-
 
 //Set the camera position
 camera.position.set(-2.5, 2.5, 0);
@@ -154,12 +149,6 @@ scene.add(grid);
 var axisHelper = new THREE.AxisHelper( 20 );
 scene.add( axisHelper );
 
-/**
- * checks if your key is pressed 
- * @param {event} e 
- */
-
-
 // add players to game
 var player1 = new Player("George"); 
 var player2 = new Player("George2");
@@ -167,6 +156,49 @@ var players = [];
 players.push(player1);
 players.push(player2);
 
+// cue code 
+parent = new THREE.Object3D();
+scene.add( parent );
+var pivot1 = new THREE.Object3D();
+parent.add(pivot1);
+pivot1.add(poolCue.mesh);
+poolCue.mesh.position.x = -1;
+poolCue.mesh.position.y = 0.1;
+
+function updatePoolCue(){
+	parent.position.set(white_ball.mesh.position.x, white_ball.mesh.position.y , white_ball.mesh.position.z);
+}
+
+function cueTurn() {
+	var ready = ballsHaveStopped();
+
+  	if (input.left && ready) {
+		parent.rotation.y -= 0.025;
+		console.log(parent.rotation.y);
+  	}
+  		// Right
+  	if (input.right && ready) {
+		parent.rotation.y += 0.025;
+		console.log(parent.rotation.y);
+	}
+  	//parent.arrowHelper.setDirection(new THREE.Vector3(parent.direction.x, 0, parent.direction.y));
+
+  	// Up
+  	if (input.up && ready) {
+		//balls[0].shootSpeed = (balls[0].shootSpeed >= 7) ? 7 : balls[0].shootSpeed + 0.1;
+  	}
+  	// Down
+  	if (input.down && ready) {
+		//balls[0].shootSpeed = (balls[0].shootSpeed <= 1) ? 1 : balls[0].shootSpeed - 0.1;
+  	}
+
+  	// Space
+  	if (input.space && ready) {
+		//this.shot = true;
+		//balls[0].velocity = new THREE.Vector2(balls[0].direction.x * balls[0].shootSpeed, balls[0].direction.y * balls[0].shootSpeed);
+  }
+}
+//
 
 var turn = 0;
 var playerTurn = 0;
@@ -185,7 +217,9 @@ function nextTurn() {
 }
 
 
-//Make the ball rotate
+/**
+ * Make the ball rotate
+ */
 function rollTheBalls(){
 	for (let i = 0; i < balls.length; i++) {
 		if(balls[i].getTotalVelocity() >= 0.01){
@@ -199,9 +233,6 @@ function rollTheBalls(){
 		}
 	}
 }
-
-	
-
 
 
 /**
@@ -328,6 +359,7 @@ var render = function () {
 		Ball.update(delta, colBounds, poolHoles)
 	}, this);
 	
+	cueTurn();
 	if(balls.length == 15){
 		endGame()
 		document.getElementById('endGame').style.visibility = "visible";
@@ -342,7 +374,12 @@ var render = function () {
 	requestAnimationFrame( render );
 	
 };
+<<<<<<< HEAD
 endGame();
+=======
+
+parent.position.set(white_ball.position.x, white_ball.position.y, white_ball.position.z);
+>>>>>>> ad69b6bbb6a02bb22c937e65c360199642444a16
 updatePoolCue();
 render();
 start();
