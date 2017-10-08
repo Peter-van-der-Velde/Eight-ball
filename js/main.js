@@ -149,8 +149,8 @@ function checkKey(e) {
 
 	e = e || window.event;
 	var stillBalls = ballsHaveStopped();
-	//	console.log (e.keyCode);
-    if (e.keyCode == '87' && stillBalls) {  	// 'w'
+
+	if (e.keyCode == '87' && stillBalls) {  	// 'w'
        
     }
     else if (e.keyCode == '83' && stillBalls) {	// 's'

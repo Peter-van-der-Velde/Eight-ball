@@ -102,7 +102,7 @@ class Ball {
      */
     ballInHole(poolHoles) {
         for (let i = 0; i < poolHoles.length; i++) {
-            if (poolHoles[i].mesh.position.distanceTo(this.position) <= (poolHoles[i].radius + this.size))
+            if (poolHoles[i].mesh.position.distanceTo(this.position) <= (poolHoles[i].radiusTop + this.size))
                 return true;
         }
 
