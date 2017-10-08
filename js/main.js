@@ -36,12 +36,13 @@ var wall_3 = new textureBox(0.67, 1, 0.8, tableEdgeTexture, 1.1, 0.2, 0.1); //2.
 var wall_4 = new textureBox(-0.67, 1, 0.8, tableEdgeTexture, 1.1, 0.2, 0.1); //2.7
 var wall_5 = new textureBox(0.67, 1, -0.8, tableEdgeTexture, 1.1, 0.2, 0.1); //2.7
 var wall_6 = new textureBox(-0.67, 1, -0.8, tableEdgeTexture, 1.1, 0.2, 0.1); //2.7
-var cylinder_1 = new cylinder(0, 1, 0.85, '#000000', 0.2, 0.12);
-var cylinder_2 = new cylinder(0, 1, -0.85, '#000000', 0.2, 0.12);
-var cylinder_3 = new cylinder(1.35, 1, 0.8, '#000000', 0.2, 0.12);
-var cylinder_4 = new cylinder(1.35, 1, -0.8, '#000000', 0.2, 0.12);
-var cylinder_5 = new cylinder(-1.35, 1, 0.8, '#000000', 0.2, 0.12);
-var cylinder_6 = new cylinder(-1.35, 1, -0.8, '#000000', 0.2, 0.12);
+var cylinder_1 = new cylinder(0, 1, 0.85, '#000000', 0.2, 0.12, 0.12);
+var cylinder_2 = new cylinder(0, 1, -0.85, '#000000', 0.2, 0.12, 0.12);
+var cylinder_3 = new cylinder(1.35, 1, 0.8, '#000000', 0.2, 0.12, 0.12);
+var cylinder_4 = new cylinder(1.35, 1, -0.8, '#000000', 0.2, 0.12, 0.12);
+var cylinder_5 = new cylinder(-1.35, 1, 0.8, '#000000', 0.2, 0.12, 0.12);
+var cylinder_6 = new cylinder(-1.35, 1, -0.8, '#000000', 0.2, 0.12, 0.12);
+var poolCue = new cylinder(0, 1, 0, '#FFF', 1.8, 0.010, 0.020);
 var leg_1 = new box(1.4, 0.5, -0.8, '#835C3B', 0.1, 1, 0.1);
 var leg_2 = new box(1.4, 0.5, 0.8, '#835C3B', 0.1, 1, 0.1);
 var leg_3 = new box(-1.4, 0.5, 0.8, '#835C3B', 0.1, 1, 0.1);
@@ -59,6 +60,7 @@ eight_ball_table.add(cylinder_3.mesh);
 eight_ball_table.add(cylinder_4.mesh);
 eight_ball_table.add(cylinder_5.mesh);
 eight_ball_table.add(cylinder_6.mesh);
+eight_ball_table.add(poolCue.mesh);
 eight_ball_table.add(wall_5);
 eight_ball_table.add(wall_6);
 eight_ball_table.add(leg_1);

@@ -11,12 +11,13 @@
 	 */
 export class cylinder {
 
-    constructor(x, y, z, constructorColor, height, radius){
+    constructor(x, y, z, constructorColor, height, radiusTop, radiusBottom){
         var cylinderMaterial = new THREE.MeshPhongMaterial({
 			color : constructorColor
 		});			
-		this.radius = radius;
-		var geometry = new THREE.CylinderGeometry( radius, radius, height); //CylinderGeometry(radiusTop, radiusBottom, height, radiusSegments, heightSegments, openEnded, thetaStart, thetaLength)
+		this.radiusTop = radiusTop;
+		this.radiusBottom = radiusBottom;
+		var geometry = new THREE.CylinderGeometry( radiusTop, radiusBottom, height); //CylinderGeometry(radiusTop, radiusBottom, height, radiusSegments, heightSegments, openEnded, thetaStart, thetaLength)
 		
 		this.mesh = new THREE.Mesh(geometry, cylinderMaterial);
 		this.mesh.castShadow = true;
