@@ -15,7 +15,7 @@ export class cylinder {
         var cylinderMaterial = new THREE.MeshPhongMaterial({
 			color : constructorColor
 		});			
-
+		this.radius = radius;
 		var geometry = new THREE.CylinderGeometry( radius, radius, height); //CylinderGeometry(radiusTop, radiusBottom, height, radiusSegments, heightSegments, openEnded, thetaStart, thetaLength)
 		
 		this.mesh = new THREE.Mesh(geometry, cylinderMaterial);

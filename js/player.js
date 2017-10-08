@@ -17,4 +17,12 @@ class Player {
     changeName(newName) {
         this.name = newName;
     }
+
+    /**
+     * adds points to the totalPoints variable of the player object
+     * @param {number} points amount of points to be added 
+     */
+    addPoints(points) {
+        this.totalPoints += points;
+    }
 }

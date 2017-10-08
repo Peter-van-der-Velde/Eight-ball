@@ -1,5 +1,5 @@
 var balls = [];
-
+var amountOfBallsInGame;
 /**
  * a ball class for the billiard balls
  * @class
@@ -95,7 +95,18 @@ class Ball {
 
         ball_2.velocity.x = totalVelocityA * Math.cos(angleA - contactAngle) * Math.cos(contactAngle) + totalVelocityB * Math.sin(angleB - contactAngle) * Math.cos(contactAngle + (Math.PI / 2));
         ball_2.velocity.z = totalVelocityA * Math.cos(angleA - contactAngle) * Math.sin(contactAngle) + totalVelocityB * Math.sin(angleB - contactAngle) * Math.sin(contactAngle + (Math.PI / 2));
+    }
 
+    /**
+     * Checks if the ball hits one of the holes;
+     */
+    ballInHole(poolHoles) {
+        for (let i = 0; i < poolHoles.length; i++) {
+            if (poolHoles[i].mesh.position.distanceTo(this.position) <= (poolHoles[i].radius + this.size))
+                return true;
+        }
+
+        return false;
     }
 
     /**
@@ -103,7 +114,7 @@ class Ball {
      * @param {number} dt the difference in time 
      * @param {bounds} bounds 
      */
-    update(dt, bounds) { 
+    update(dt, bounds, poolHoles) { 
         
         this.velocity.x = (this.velocity.x + this.acceleration.x) * this.friction;
         this.velocity.y = (this.velocity.y + this.acceleration.y) * this.friction;
@@ -114,7 +125,17 @@ class Ball {
         var posz = this.position.z + (this.velocity.z * dt);
 
         this.position = new THREE.Vector3(posx, posy, posz);
- 
+        
+        if (this.ballInHole(poolHoles)) {
+            this.position = new THREE.Vector3(0, 1.5, balls.length/100);
+            this.velocity = new THREE.Vector3(0, 0, 0);
+            for(let i = 0; i < balls.length; i++) {
+                if (balls[i].position == this.position) 
+                    balls.splice(i, 1);   
+            }
+            console.log (balls.length);
+        }
+
         if (this.position.x < bounds.x) {
             this.position.x = bounds.x;
             this.velocity.x *= -this.restitution;

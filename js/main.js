@@ -67,6 +67,9 @@ eight_ball_table.add(leg_4);
 eight_ball_table.castShadow = true;
 scene.add(eight_ball_table);
 
+// array of cylinders
+var poolHoles = [cylinder_1, cylinder_2, cylinder_3, cylinder_4, cylinder_5, cylinder_6] 
+
 //Creating the balls (lol)
 var white_ball = new WhiteBall(-1.0, 1.08, 0, '#FFFFFF');
 var ball_1 = new Ball(0.5, 1.08, 0, '#00FFFF');
@@ -130,25 +133,16 @@ players.push(player2);
 
 var turn = 0;
 var playerTurn = 0;
-var players = players;
 var x;
 var z;
-var amountOfBalls = balls.length;
+var amountOfBallsThisRound = balls.length;
 
 
 function nextTurn() {
-	this.turn++;
-	if (this.players.length < players.length())
-		this.playerTurn++;
-	else
-		this.playerTurn = 0;
-}
-
-/**
- *
- */
-function cameraOverview() {
-
+	amountOfBallsThisRound = balls.length;
+	turn++;
+	playerTurn = turn % players.length;
+	//calcScore();
 }
 
 function ballsHaveStopped() {
@@ -161,8 +155,9 @@ function ballsHaveStopped() {
 }
 	
 function calcScore() {
-	//let score = (this.amountOfBalls - amountOfBallsNow) * 100;
-	//return score
+	let score = (amountOfBallsThisRound - balls.length) * 100;
+	players[playerTurn].addPoints(score);
+	amountOfBallsThisRound = balls.length;
 }
 
 
@@ -183,7 +178,10 @@ function onWindowResize(){
  * update the GUI elements
  */
 function updateUI() {
-
+	var player1Score = document.getElementById("p1Score");
+	var player2Score = document.getElementById("p2Score");
+	player1Score.innerHTML = player1.totalPoints;
+	player2Score.innerHTML = player2.totalPoints;
 }
 
 /** 
@@ -197,8 +195,11 @@ function updateValues() {
 function aim() {
 	document.getElementById("submit").onclick = function () {
 		updateValues();
-		if (ballsHaveStopped())
+		if (ballsHaveStopped()) {
+			calcScore()
+			nextTurn();
 			white_ball.fire(new THREE.Vector3(x, 0, z));
+		}
 	}
 }
 
@@ -212,9 +213,10 @@ function start() {
 var render = function () {
 	var delta = clock.getDelta();
 	balls.forEach(function(Ball) {
-		Ball.update(delta, colBounds)
+		Ball.update(delta, colBounds, poolHoles)
 	}, this);
 	
+	updateUI();
 	renderer.render( scene, camera );
 	requestAnimationFrame( render );
 };
