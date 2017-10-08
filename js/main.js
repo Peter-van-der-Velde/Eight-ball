@@ -49,6 +49,7 @@ var leg_3 = new box(-1.4, 0.5, 0.8, '#835C3B', 0.1, 1, 0.1);
 var leg_4 = new box(-1.4, 0.5, -0.8, '#835C3B', 0.1, 1, 0.1);
 var eight_ball_table = new THREE.Group();
 var colBounds = new bounds (-1.33, -0.73, 1.33, 0.73); // bounds of table
+
 eight_ball_table.add(green_mat);
 eight_ball_table.add(wall_1);
 eight_ball_table.add(wall_2);
@@ -72,6 +73,11 @@ scene.add(eight_ball_table);
 
 // array of cylinders
 var poolHoles = [cylinder_1, cylinder_2, cylinder_3, cylinder_4, cylinder_5, cylinder_6] 
+
+// poolcue
+poolCue.mesh.rotateZ(-0.55 * Math.PI);
+poolCue.mesh.position.set(-2, 1.25, 0);
+
 
 //Creating the balls (lol)
 var white_ball = new WhiteBall(-1.0, 1.08, 0, '#FFFFFF');
@@ -200,6 +206,10 @@ function updateUI() {
 function updateValues() {
 	x = document.getElementById("x").value;
 	z = document.getElementById("z").value;
+}
+
+function setPoolCue() {
+
 }
 
 function aim() {
