@@ -253,7 +253,44 @@ body {
 }
 
 
+video { 
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    transform: translateX(-50%) translateY(-50%);
+}
 
+.content{
+	background: rgba(0,0,0,0.3);
+	color: white;
+	width:40%;
+	padding: 20px 0px;
+	margin: 10px auto;
+	border-radius:10px;
+}
+.content p{
+	color: #fff;
+	margin: 20px;
+	font-size:16px;
+}
+.content a{color: #fff;}
+
+.shoot{
+	padding:10px; 
+	font-color:#FFF;
+	border-radius:10px;
+	width:160px;
+	min-width:100px;
+	margin:5px 0px;
+}
+.content input, select, textarea{
+    color: #FFF;
+}
 
 
 

@@ -4,7 +4,6 @@ body {
 
 #p1stats {
     position: absolute;
-    background-color: white;
     color: black;
     float: left;
     left: 1em;
@@ -17,7 +16,6 @@ body {
 #p2stats {
     position: absolute;
     right: 1px;
-    background-color: white;
     color: black;
     float: right;
     right: 1em;
@@ -38,7 +36,6 @@ body {
 
 #FireBall {
     position: absolute;
-    background-color: white;
     color: black;
     float: left;
     left: 1em;
@@ -49,7 +46,6 @@ body {
 }
 
 #endGame {
-    background-color: white;
     height: 100%;
     width: 100%;
     position: absolute;

@@ -40,7 +40,7 @@ var ball_13Texture = loader.load("img/ballTextures/13.png");
 var ball_14Texture = loader.load("img/ballTextures/14.png");
 var ball_15Texture = loader.load("img/ballTextures/15.png");
 //Room Textures
-roomBuilder(10, 10, 10, floorTexture, wallTexture);
+roomBuilder(20, 20, 20, floorTexture, wallTexture);
 scene.add(roomItems);
 
 
@@ -94,6 +94,7 @@ var wall_3 = new textureBox(0.67, 1, 0.8, tableEdgeTexture, 1.1, 0.2, 0.1); //2.
 var wall_4 = new textureBox(-0.67, 1, 0.8, tableEdgeTexture, 1.1, 0.2, 0.1); //2.7
 var wall_5 = new textureBox(0.67, 1, -0.8, tableEdgeTexture, 1.1, 0.2, 0.1); //2.7
 var wall_6 = new textureBox(-0.67, 1, -0.8, tableEdgeTexture, 1.1, 0.2, 0.1); //2.7
+var roomWalls = new textureBox(0, 10, 0, wallTexture, 20, 20, 20);
 var cylinder_1 = new cylinder(0, 1, 0.85, '#000000', 0.2, 0.12, 0.12);
 var cylinder_2 = new cylinder(0, 1, -0.85, '#000000', 0.2, 0.12, 0.12);
 var cylinder_3 = new cylinder(1.35, 1, 0.8, '#000000', 0.2, 0.12, 0.12);
@@ -113,6 +114,9 @@ eight_ball_table.add(wall_1);
 eight_ball_table.add(wall_2);
 eight_ball_table.add(wall_3);
 eight_ball_table.add(wall_4);
+eight_ball_table.add(wall_5);
+eight_ball_table.add(wall_6);
+eight_ball_table.add(roomWalls);
 eight_ball_table.add(cylinder_1.mesh);
 eight_ball_table.add(cylinder_2.mesh);
 eight_ball_table.add(cylinder_3.mesh);
@@ -120,8 +124,6 @@ eight_ball_table.add(cylinder_4.mesh);
 eight_ball_table.add(cylinder_5.mesh);
 eight_ball_table.add(cylinder_6.mesh);
 eight_ball_table.add(poolCue.mesh);
-eight_ball_table.add(wall_5);
-eight_ball_table.add(wall_6);
 eight_ball_table.add(leg_1);
 eight_ball_table.add(leg_2);
 eight_ball_table.add(leg_3);
@@ -327,6 +329,8 @@ function start() {
 /**
  * end the game
  */
+ 
+ 
 function endGame() {
 	// find out who won
 	var winner = player1.name;
@@ -365,10 +369,6 @@ var render = function () {
 	}, this);
 	
 	cueTurn();
-	if(balls.length == 15){
-		endGame()
-		document.getElementById('endGame').style.visibility = "visible";
-	}
 	
 	rollTheBalls();
 	input.update();

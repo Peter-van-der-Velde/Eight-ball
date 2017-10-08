@@ -18,43 +18,50 @@
 				</div>
 			</div>
 			<audio controls autoplay id="backgroundPlayer">
-				<source src="music/backgroundMusic.mp3" type="audio/mp3">
+				<!--<source src="music/backgroundMusic.mp3" type="audio/mp3">-->
 			</audio>
 		</div>
 		<!-- UI -->
 		<div id="renderCanvasDiv">
 			
 		</div>
-		<div id="p1stats" class="scoreBox" >
+		<div class="content" id="p1stats" class="scoreBox" >
 			<p>p1 stats:</p>
 			<p>score:</p>
 			<p id="p1Score">0</p>
 		</div>
-		<div id="p2stats" class="scoreBox">
+		<div class="content" id="p2stats" class="scoreBox">
 			<p id="turn">0</p>
 			<p>p2 stats:</p>
 			<p>score:</p>
 			<p id="p2Score">0</p>
 		</div>
-		<div id="endScreen">
+		<div class="content" id="endScreen">
 			<p>you won!</p>
 		</div>
-		<div id="FireBall">
+		<div class="content" id="FireBall">
 			<form action="/action_page.php">
 				<p>Fire Power: <span id="displayX"></span></p>
 				<input type="range" min="0" max="10" step="0.1" value="0" class="slider" id="power">
-				<input type="button" id="submit" value="Shoot / Respawn">
+				<a><input class="button shoot" type="button" id="submit" value="Shoot"/></a>
+				<a><input class="button shoot" type="button" value="Cheat" onclick='cheat()'/></a>
 			</form> 
 		</div>
 		<div id="endGame">
-			<h1 id="Wtext"></h1>
-			<br/>
-			<br/>
-			
-			<h3>Score:</h3>
-			<br/>
-			<p id="s1"></p>
-			<p id="s2"></p>
+			<video id="bgvid" playsinline autoplay muted loop>
+				<!-- WCAG general accessibility recommendation is that media such as background video play through only once. Loop turned on for the purposes of illustration; if removed, the end of the video will fade in the same way created by pressing the "Pause" button  -->
+				<source src="img/dance.mp4" type="video/mp4">
+			</video>
+			<div class="content">
+				<h1 id="Wtext"></h1>
+				<a href="test.html">Play again?</a>
+				<br/>
+				
+				<h3>Score:</h3>
+				<p id="s1"></p>
+				<p id="s2"></p>
+			</div>
+
 		</div>
 		<a onclick='toggleMute()' ><input id="unmutedButton" type="image" src="./img/unmuted.png" class="mutingButtons" /></a>
 		<a onclick='toggleMute()' ><input id="mutedButton" type="image" src="./img/muted.png" class="mutingButtons" /></a>
@@ -65,7 +72,6 @@
 				var wrapper = document.getElementById("wrapper");
 				wrapper.style.display = "none";
 			}
-			wrapper.style.display = "none"; // for debug purposes
 			var audioPlayer = document.getElementById("backgroundPlayer");
 			audioPlayer.volume = 0.1;
 			
@@ -100,6 +106,13 @@
 			sliderZ.oninput = function() {
 			  outputZ.innerHTML = this.value;
 			}			
+			
+			
+			
+			//Cheat
+			function cheat(){
+				document.getElementById('endGame').style.visibility = "visible";
+			}
 		</script>
 		<script src="js/three.min.js"></script>
 		<script src="js/OrbitControls.js"></script>
