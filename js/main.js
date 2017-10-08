@@ -35,7 +35,12 @@ var wall_3 = new box(0.67, 1, 0.8, '#835C3B', 1.1, 0.2, 0.1); //2.7
 var wall_4 = new box(-0.67, 1, 0.8, '#835C3B', 1.1, 0.2, 0.1); //2.7
 var wall_5 = new box(0.67, 1, -0.8, '#835C3B', 1.1, 0.2, 0.1); //2.7
 var wall_6 = new box(-0.67, 1, -0.8, '#835C3B', 1.1, 0.2, 0.1); //2.7
-var cylinder_1 = new cylinder(0, 1, 1, '#000000', 1, 1);
+var cylinder_1 = new cylinder(0, 1, 0.85, '#000000', 0.2, 0.12);
+var cylinder_2 = new cylinder(0, 1, -0.85, '#000000', 0.2, 0.12);
+var cylinder_3 = new cylinder(1.35, 1, 0.8, '#000000', 0.2, 0.12);
+var cylinder_4 = new cylinder(1.35, 1, -0.8, '#000000', 0.2, 0.12);
+var cylinder_5 = new cylinder(-1.35, 1, 0.8, '#000000', 0.2, 0.12);
+var cylinder_6 = new cylinder(-1.35, 1, -0.8, '#000000', 0.2, 0.12);
 var leg_1 = new box(1.4, 0.5, -0.8, '#835C3B', 0.1, 1, 0.1);
 var leg_2 = new box(1.4, 0.5, 0.8, '#835C3B', 0.1, 1, 0.1);
 var leg_3 = new box(-1.4, 0.5, 0.8, '#835C3B', 0.1, 1, 0.1);
@@ -48,6 +53,11 @@ eight_ball_table.add(wall_2);
 eight_ball_table.add(wall_3);
 eight_ball_table.add(wall_4);
 eight_ball_table.add(cylinder_1.mesh);
+eight_ball_table.add(cylinder_2.mesh);
+eight_ball_table.add(cylinder_3.mesh);
+eight_ball_table.add(cylinder_4.mesh);
+eight_ball_table.add(cylinder_5.mesh);
+eight_ball_table.add(cylinder_6.mesh);
 eight_ball_table.add(wall_5);
 eight_ball_table.add(wall_6);
 eight_ball_table.add(leg_1);
