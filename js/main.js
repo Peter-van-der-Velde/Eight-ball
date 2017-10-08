@@ -117,11 +117,48 @@ scene.add(eight_ball_table);
 var poolHoles = [cylinder_1, cylinder_2, cylinder_3, cylinder_4, cylinder_5, cylinder_6] 
 
 poolCue.mesh.rotateZ(-0.55 * Math.PI);
-
 function updatePoolCue(){
 	// poolcue
-	poolCue.mesh.position.set(white_ball.mesh.position.x - 0.8, white_ball.mesh.position.y + 0.15, white_ball.mesh.position.z);
+	//poolCue.mesh.position.set(white_ball.mesh.position.x - 0.8, white_ball.mesh.position.y + 0.15, white_ball.mesh.position.z);
 }
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 //Set the camera position
@@ -139,31 +176,11 @@ scene.add(grid);
 var axisHelper = new THREE.AxisHelper( 20 );
 scene.add( axisHelper );
 
-document.onkeydown = checkKey;
-
 /**
  * checks if your key is pressed 
  * @param {event} e 
  */
-function checkKey(e) {
 
-	e = e || window.event;
-	var stillBalls = ballsHaveStopped();
-
-	if (e.keyCode == '87' && stillBalls) {  	// 'w'
-       
-    }
-    else if (e.keyCode == '83' && stillBalls) {	// 's'
-        
-    }
-    else if (e.keyCode == '65' && stillBalls) {	// 'a'
-       
-    }
-    else if (e.keyCode == '68' && stillBalls) {	// 'd'
-
-    }
-
-}
 
 // add players to game
 var player1 = new Player("George"); 
