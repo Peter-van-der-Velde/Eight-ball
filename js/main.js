@@ -1,4 +1,5 @@
 import {box} from './box.js';
+import {cylinder} from './cylinder.js';
 
 
 var scene = new THREE.Scene();
@@ -28,10 +29,11 @@ scene.add(roomItems);
 //Table
 // x, y, z, color, width, height, depth
 var green_mat = new textureBox(0, 1, 0, tableTexture,2.8 , 0.1, 1.6);
-var wall_1 = new box(1.4, 1, 0, '#835C3B', 0.1, 0.2, 1.7);
-var wall_2 = new box(-1.4, 1, 0, '#835C3B', 0.1, 0.2, 1.7);
-var wall_3 = new box(0, 1, 0.8, '#835C3B', 2.7, 0.2, 0.1);
-var wall_4 = new box(0, 1, -0.8, '#835C3B', 2.7, 0.2, 0.1);
+var wall_1 = new box(1.4, 1, 0, '#835C3B', 0.1, 0.2, 1.3); //1.7
+var wall_2 = new box(-1.4, 1, 0, '#835C3B', 0.1, 0.2, 1.3); //1.7
+var wall_3 = new box(0, 1, 0.8, '#835C3B', 2.5, 0.2, 0.1); //2.7
+var wall_4 = new box(0, 1, -0.8, '#835C3B', 2.5, 0.2, 0.1); //2.7
+var cylinder_1 = new cylinder(0, 1, 1, '#000000', 20, 20);
 var leg_1 = new box(1.4, 0.5, -0.8, '#835C3B', 0.1, 1, 0.1);
 var leg_2 = new box(1.4, 0.5, 0.8, '#835C3B', 0.1, 1, 0.1);
 var leg_3 = new box(-1.4, 0.5, 0.8, '#835C3B', 0.1, 1, 0.1);
@@ -43,6 +45,7 @@ eight_ball_table.add(wall_1);
 eight_ball_table.add(wall_2);
 eight_ball_table.add(wall_3);
 eight_ball_table.add(wall_4);
+eight_ball_table.add(cylinder_1);
 eight_ball_table.add(leg_1);
 eight_ball_table.add(leg_2);
 eight_ball_table.add(leg_3);
