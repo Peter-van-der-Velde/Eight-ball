@@ -1,5 +1,6 @@
 import {box} from './box.js';
 import {cylinder} from './cylinder.js';
+import {Input} from './input.js';
 
 
 var scene = new THREE.Scene();
@@ -121,45 +122,6 @@ function updatePoolCue(){
 	// poolcue
 	//poolCue.mesh.position.set(white_ball.mesh.position.x - 0.8, white_ball.mesh.position.y + 0.15, white_ball.mesh.position.z);
 }
-
-
-
-
-
-
-
-
-
-
-	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 //Set the camera position
 camera.position.set(-2.5, 2.5, 0);
@@ -319,6 +281,7 @@ function endGame() {
 	console.log("well.. Hello there.");
 }
 
+var input = new Input();
 
 /**
  * our render function it renders our scene
@@ -328,12 +291,13 @@ var render = function () {
 	balls.forEach(function(Ball) {
 		Ball.update(delta, colBounds, poolHoles)
 	}, this);
-	
+	input.update();
 	ballsHaveStopped();
 	calcScore();
 	updateUI();
 	renderer.render( scene, camera );
 	requestAnimationFrame( render );
+	
 };
 
 updatePoolCue();
