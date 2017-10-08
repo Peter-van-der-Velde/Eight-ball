@@ -136,6 +136,7 @@ var turn = 0;
 var playerTurn = 0;
 var x;
 var z;
+var amountOfBalls;
 var amountOfBallsThisRound = balls.length;
 
 
@@ -143,7 +144,6 @@ function nextTurn() {
 	amountOfBallsThisRound = balls.length;
 	turn++;
 	playerTurn = turn % players.length;
-	//calcScore();
 }
 
 function ballsHaveStopped() {
@@ -156,15 +156,20 @@ function ballsHaveStopped() {
 }
 	
 function calcScore() {
-	let score = (amountOfBallsThisRound - balls.length) * 100;
-	players[playerTurn].addPoints(score);
-	amountOfBallsThisRound = balls.length;
+	if (amountOfBalls != balls.length) {
+		let score = (amountOfBallsThisRound - balls.length) * 100;
+		players[playerTurn].addPoints(score);
+		amountOfBalls = balls.length;
+	}
 }
 
 
 //Auto resizer when window size changes
 window.addEventListener( 'resize', onWindowResize, false );
 
+/**
+ * Auto resizer when window size changes
+ */
 function onWindowResize(){
 
     camera.aspect = window.innerWidth / window.innerHeight;
@@ -179,6 +184,9 @@ function onWindowResize(){
  * update the GUI elements
  */
 function updateUI() {
+	var turnH = document.getElementById("turn");
+	turnH.innerHTML = "Whose turn is it? it is:" + players[playerTurn].name
+
 	var player1Score = document.getElementById("p1Score");
 	var player2Score = document.getElementById("p2Score");
 	player1Score.innerHTML = player1.totalPoints;
@@ -198,10 +206,9 @@ function aim() {
 		updateValues();
 		if (white_ball.position.y == 1.5) {
 			white_ball.respawn();
-			balls.push(white_ball);
+			players[playerTurn].addPoints(-50);
 		} else { 
 			if (ballsHaveStopped()) {
-				calcScore()
 				nextTurn();
 				white_ball.fire(new THREE.Vector3(x, 0, z));
 			}
@@ -221,7 +228,8 @@ var render = function () {
 	balls.forEach(function(Ball) {
 		Ball.update(delta, colBounds, poolHoles)
 	}, this);
-	
+
+	calcScore();
 	updateUI();
 	renderer.render( scene, camera );
 	requestAnimationFrame( render );
