@@ -171,39 +171,46 @@ function updatePoolCue(){
 
 function cueTurn() {
 	var ready = ballsHaveStopped();
+	updateValues();
+	var powerH = document.getElementById("power");
 
   	if (input.left && ready) {
 		parent.rotation.y -= 0.025;
-		console.log(parent.rotation.y);
   	}
   		// Right
   	if (input.right && ready) {
 		parent.rotation.y += 0.025;
-		console.log(parent.rotation.y);
 	}
   	//parent.arrowHelper.setDirection(new THREE.Vector3(parent.direction.x, 0, parent.direction.y));
 
   	// Up
   	if (input.up && ready) {
-		//balls[0].shootSpeed = (balls[0].shootSpeed >= 7) ? 7 : balls[0].shootSpeed + 0.1;
-  	}
+		// more power
+		powerH.value += 0.05;
+	}
   	// Down
   	if (input.down && ready) {
-		//balls[0].shootSpeed = (balls[0].shootSpeed <= 1) ? 1 : balls[0].shootSpeed - 0.1;
-  	}
+		// less power
+		powerH.value -= 0.2;
+	}
 
   	// Space
   	if (input.space && ready) {
-		//this.shot = true;
-		//balls[0].velocity = new THREE.Vector2(balls[0].direction.x * balls[0].shootSpeed, balls[0].direction.y * balls[0].shootSpeed);
-  }
+		if (white_ball.position.y == 1.5) {
+			white_ball.respawn();
+			players[playerTurn].addPoints(-50);
+		} else { 
+			updatePoolCue();
+			white_ball.fire(new THREE.Vector3(Math.cos(parent.rotation.y), 0, -Math.sin(parent.rotation.y)).multiplyScalar(power));
+			nextTurn();
+		}
+	}
 }
 //
 
 var turn = 0;
 var playerTurn = 0;
-var x;
-var z;
+var power;
 var amountOfBalls;
 var amountOfBallsThisRound = balls.length;
 
@@ -224,7 +231,6 @@ function rollTheBalls(){
 	for (let i = 0; i < balls.length; i++) {
 		if(balls[i].getTotalVelocity() >= 0.01){
 			var localSpeed = new THREE.Vector3(balls[i].velocity.x, balls[i].velocity.y, balls[i].velocity.z).normalize();
-			//console.log(balls[i].getTotalVelocity());
 			localSpeed.multiplyScalar(balls[i].getTotalVelocity()).normalize();
 			balls[i].mesh.rotateOnAxis(localSpeed, (balls[i].getTotalVelocity())*-0.5);
 		}
@@ -296,8 +302,7 @@ function updateUI() {
  * update all the values it can get from the html DOM 
  */
 function updateValues() {
-	x = document.getElementById("x").value;
-	z = document.getElementById("z").value;
+	power = document.getElementById("power").value;
 }
 
 /**
@@ -312,7 +317,7 @@ function start() {
 		} else { 
 			if (ballsHaveStopped()) {
 				updatePoolCue();
-				white_ball.fire(new THREE.Vector3(Math.cos(parent.rotation.y), 0, -Math.sin(parent.rotation.y)));
+				white_ball.fire(new THREE.Vector3(Math.cos(parent.rotation.y), 0, -Math.sin(parent.rotation.y)).multiplyScalar(power));
 				nextTurn();
 			}
 		}
