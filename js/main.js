@@ -21,6 +21,7 @@ var loader = new THREE.TextureLoader();
 var floorTexture = loader.load("img/floor.png");
 var tableTexture = loader.load("img/green_mat.png");
 var wallTexture = loader.load("img/wallBackground.png");
+var tableEdgeTexture = loader.load("img/edge.png");
 
 //Room Textures
 roomBuilder(10, 10, 10, floorTexture, wallTexture);
@@ -29,12 +30,12 @@ scene.add(roomItems);
 //Table
 // x, y, z, color, width, height, depth
 var green_mat = new textureBox(0, 1, 0, tableTexture,2.8 , 0.1, 1.6);
-var wall_1 = new box(1.4, 1, 0, '#835C3B', 0.1, 0.2, 1.3); //1.7
-var wall_2 = new box(-1.4, 1, 0, '#835C3B', 0.1, 0.2, 1.3); //1.7
-var wall_3 = new box(0.67, 1, 0.8, '#835C3B', 1.1, 0.2, 0.1); //2.7
-var wall_4 = new box(-0.67, 1, 0.8, '#835C3B', 1.1, 0.2, 0.1); //2.7
-var wall_5 = new box(0.67, 1, -0.8, '#835C3B', 1.1, 0.2, 0.1); //2.7
-var wall_6 = new box(-0.67, 1, -0.8, '#835C3B', 1.1, 0.2, 0.1); //2.7
+var wall_1 = new textureBox(1.4, 1, 0, tableEdgeTexture, 0.1, 0.2, 1.3); //1.7
+var wall_2 = new textureBox(-1.4, 1, 0, tableEdgeTexture, 0.1, 0.2, 1.3); //1.7
+var wall_3 = new textureBox(0.67, 1, 0.8, tableEdgeTexture, 1.1, 0.2, 0.1); //2.7
+var wall_4 = new textureBox(-0.67, 1, 0.8, tableEdgeTexture, 1.1, 0.2, 0.1); //2.7
+var wall_5 = new textureBox(0.67, 1, -0.8, tableEdgeTexture, 1.1, 0.2, 0.1); //2.7
+var wall_6 = new textureBox(-0.67, 1, -0.8, tableEdgeTexture, 1.1, 0.2, 0.1); //2.7
 var cylinder_1 = new cylinder(0, 1, 0.85, '#000000', 0.2, 0.12);
 var cylinder_2 = new cylinder(0, 1, -0.85, '#000000', 0.2, 0.12);
 var cylinder_3 = new cylinder(1.35, 1, 0.8, '#000000', 0.2, 0.12);
