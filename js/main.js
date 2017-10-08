@@ -342,7 +342,7 @@ var render = function () {
 	requestAnimationFrame( render );
 	
 };
-
+endGame();
 updatePoolCue();
 render();
 start();
