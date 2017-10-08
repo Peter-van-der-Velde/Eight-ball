@@ -374,12 +374,9 @@ var render = function () {
 	requestAnimationFrame( render );
 	
 };
-<<<<<<< HEAD
-endGame();
-=======
 
+endGame();
 parent.position.set(white_ball.position.x, white_ball.position.y, white_ball.position.z);
->>>>>>> ad69b6bbb6a02bb22c937e65c360199642444a16
 updatePoolCue();
 render();
 start();
