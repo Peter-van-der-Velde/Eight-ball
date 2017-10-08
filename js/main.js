@@ -22,29 +22,44 @@ var floorTexture = loader.load("img/floor.png");
 var tableTexture = loader.load("img/green_mat.png");
 var wallTexture = loader.load("img/wallBackground.png");
 var tableEdgeTexture = loader.load("img/edge.png");
-
+var whiteBallTexture = loader.load("img/ballTextures/0.png");
+var ball_1Texture = loader.load("img/ballTextures/1.png");
+var ball_2Texture = loader.load("img/ballTextures/2.png");
+var ball_3Texture = loader.load("img/ballTextures/3.png");
+var ball_4Texture = loader.load("img/ballTextures/4.png");
+var ball_5Texture = loader.load("img/ballTextures/5.png");
+var ball_6Texture = loader.load("img/ballTextures/6.png");
+var ball_7Texture = loader.load("img/ballTextures/7.png");
+var ball_8Texture = loader.load("img/ballTextures/8.png");
+var ball_9Texture = loader.load("img/ballTextures/9.png");
+var ball_10Texture = loader.load("img/ballTextures/10.png");
+var ball_11Texture = loader.load("img/ballTextures/11.png");
+var ball_12Texture = loader.load("img/ballTextures/12.png");
+var ball_13Texture = loader.load("img/ballTextures/13.png");
+var ball_14Texture = loader.load("img/ballTextures/14.png");
+var ball_15Texture = loader.load("img/ballTextures/15.png");
 //Room Textures
 roomBuilder(10, 10, 10, floorTexture, wallTexture);
 scene.add(roomItems);
 
 
 //Creating the balls (lol)
-var white_ball = new WhiteBall(-1.0, 1.08, 0, '#FFFFFF');
-var ball_1 = new Ball(0.5, 1.08, 0, '#00FFFF');
-var ball_2 = new Ball(0.56, 1.08, 0.03, '#0000FF');
-var ball_3 = new Ball(0.56, 1.08, -0.03, '#FF00FF');
-var ball_4 = new Ball(0.62, 1.08, 0, '#000000');
-var ball_5 = new Ball(0.62, 1.08, 0.06, '#008000');
-var ball_6 = new Ball(0.62, 1.08, -0.06, '#00FF00');
-var ball_7 = new Ball(0.68, 1.08, 0.03, '#800000');
-var ball_8 = new Ball(0.68, 1.08, -0.03, '#000080');
-var ball_9 = new Ball(0.68, 1.08, 0.09, '#808000');
-var ball_10 = new Ball(0.68, 1.08, -0.09, '#800080');
-var ball_11 = new Ball(0.74, 1.08, 0, '#FF0000');
-var ball_12 = new Ball(0.74, 1.08, 0.06, '#C0C0C0');
-var ball_13 = new Ball(0.74, 1.08, -0.06, '#008080');
-var ball_14 = new Ball(0.74, 1.08, 0.12, '#FFFF00');
-var ball_15 = new Ball(0.74, 1.08, -0.12, '#808000');
+var white_ball = new WhiteBall(-1.0, 1.08, 0, whiteBallTexture);
+var ball_1 = new Ball(0.5, 1.08, 0, ball_1Texture);
+var ball_2 = new Ball(0.56, 1.08, 0.03, ball_2Texture);
+var ball_3 = new Ball(0.56, 1.08, -0.03, ball_3Texture);
+var ball_4 = new Ball(0.62, 1.08, 0, ball_4Texture);
+var ball_5 = new Ball(0.62, 1.08, 0.06, ball_5Texture);
+var ball_6 = new Ball(0.62, 1.08, -0.06, ball_6Texture);
+var ball_7 = new Ball(0.68, 1.08, 0.03, ball_7Texture);
+var ball_8 = new Ball(0.68, 1.08, -0.03, ball_8Texture);
+var ball_9 = new Ball(0.68, 1.08, 0.09, ball_9Texture);
+var ball_10 = new Ball(0.68, 1.08, -0.09, ball_10Texture);
+var ball_11 = new Ball(0.74, 1.08, 0, ball_11Texture);
+var ball_12 = new Ball(0.74, 1.08, 0.06, ball_12Texture);
+var ball_13 = new Ball(0.74, 1.08, -0.06, ball_13Texture);
+var ball_14 = new Ball(0.74, 1.08, 0.12, ball_14Texture);
+var ball_15 = new Ball(0.74, 1.08, -0.12, ball_15Texture);
 
 balls.push(ball_1);
 balls.push(ball_2);
@@ -121,43 +136,6 @@ function updatePoolCue(){
 	// poolcue
 	//poolCue.mesh.position.set(white_ball.mesh.position.x - 0.8, white_ball.mesh.position.y + 0.15, white_ball.mesh.position.z);
 }
-
-
-
-
-
-
-
-
-
-
-	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -329,6 +307,11 @@ var render = function () {
 		Ball.update(delta, colBounds, poolHoles)
 	}, this);
 	
+	if(balls.length == 15){
+		endGame()
+		document.getElementById('endGame').style.visibility = "visible";
+	}
+	
 	ballsHaveStopped();
 	calcScore();
 	updateUI();
@@ -339,4 +322,3 @@ var render = function () {
 updatePoolCue();
 render();
 start();
-//endGame();
