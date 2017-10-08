@@ -184,6 +184,26 @@ function nextTurn() {
 	playerTurn = turn % players.length;
 }
 
+
+//Make the ball rotate
+function rollTheBalls(){
+	for (let i = 0; i < balls.length; i++) {
+		if(balls[i].getTotalVelocity() >= 0.01){
+			var localSpeed = new THREE.Vector3(balls[i].velocity.x, balls[i].velocity.y, balls[i].velocity.z).normalize();
+			console.log(balls[i].getTotalVelocity());
+			localSpeed.multiplyScalar(balls[i].getTotalVelocity()).normalize();
+			balls[i].mesh.rotateOnAxis(localSpeed, (balls[i].getTotalVelocity())*-0.5);
+		}
+		else{
+			balls[i].mesh.rotateZ(0.0);
+		}
+	}
+}
+
+	
+
+
+
 /**
  * Check if the balls have stopped moving
  */
@@ -313,7 +333,7 @@ var render = function () {
 		document.getElementById('endGame').style.visibility = "visible";
 	}
 	
-
+	rollTheBalls();
 	input.update();
 	ballsHaveStopped();
 	calcScore();

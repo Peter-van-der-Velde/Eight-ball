@@ -17,6 +17,7 @@ class Ball {
         this.velocity = new THREE.Vector3(0, 0, 0);
         this.acceleration = new THREE.Vector3(0, 0, 0);
         this.friction = 0.995;
+		this.initialVelocity = 1;
 
         this.restitution = 1; // bounciness of said ball
         this.size = 0.03;
@@ -45,7 +46,12 @@ class Ball {
 
         this.mesh.position.set(this.position.x, this.position.y, this.position.z)
     }
-
+	
+	
+	
+	
+	
+	
     /**
      * Updates the position of the mesh
      * @param {THREE.Vector3} newPosition 
