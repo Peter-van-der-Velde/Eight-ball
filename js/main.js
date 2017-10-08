@@ -148,7 +148,6 @@ function nextTurn() {
 
 function ballsHaveStopped() {
 	for (let i = 0; i < balls.length; i++) {
-		console.log (balls[i].getTotalVelocity());
 		if (balls[i].getTotalVelocity() >= 0.02)
 			return false;
 	}
