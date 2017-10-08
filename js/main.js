@@ -120,9 +120,6 @@ poolCue.mesh.rotateZ(-0.55 * Math.PI);
 
 function updatePoolCue(){
 	// poolcue
-	console.log("white_ball.x : " + white_ball.mesh.position.x);
-	console.log("white_ball.y : " + white_ball.mesh.position.y);
-	console.log("white_ball.z : " + white_ball.mesh.position.z);
 	poolCue.mesh.position.set(white_ball.mesh.position.x - 0.8, white_ball.mesh.position.y + 0.15, white_ball.mesh.position.z);
 }
 
@@ -164,13 +161,11 @@ function nextTurn() {
 }
 
 function ballsHaveStopped() {
-	console.log("Checking for movement");
 	for (let i = 0; i < balls.length; i++) {
 		if (balls[i].getTotalVelocity() >= 0.02)
-			console.log("Balls still moveing");
 			return false;
 	}
-	console.log("Balls have stopped");
+	updatePoolCue();
 	return true;
 }
 	
@@ -244,6 +239,7 @@ function start() {
 	aim()
 }
 
+
 /**
  * our render function it renders our scene
  */
@@ -253,7 +249,7 @@ var render = function () {
 		Ball.update(delta, colBounds, poolHoles)
 	}, this);
 	
-	ballsHaveStopped()
+	ballsHaveStopped();
 	calcScore();
 	updateUI();
 	renderer.render( scene, camera );
