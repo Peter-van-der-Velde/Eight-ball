@@ -12,6 +12,9 @@ export class Input {
       this.space = false;
     }
   
+    /**
+     * updates the values
+     */
     update() {
       document.onkeydown = (e) => {
         e = e || window.event;

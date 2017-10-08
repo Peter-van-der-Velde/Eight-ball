@@ -138,12 +138,6 @@ scene.add(grid);
 var axisHelper = new THREE.AxisHelper( 20 );
 scene.add( axisHelper );
 
-/**
- * checks if your key is pressed 
- * @param {event} e 
- */
-
-
 // add players to game
 var player1 = new Player("George"); 
 var player2 = new Player("George2");
@@ -151,6 +145,43 @@ var players = [];
 players.push(player1);
 players.push(player2);
 
+// cue code 
+parent = new THREE.Object3D();
+scene.add( parent );
+var pivot1 = new THREE.Object3D();
+parent.add(pivot1);
+pivot1.add(poolCue.mesh);
+poolCue.mesh.position.x = -1;
+poolCue.mesh.position.y = 0.1;
+
+function cueTurn() {
+	var ready = ballsHaveStopped();
+
+  	if (input.left && ready) {
+		//parent.rotateAround(new THREE.Vector2(0, 0), -0.025);
+  	}
+  		// Right
+  	if (input.right && ready) {
+		//parent.rotateAround(new THREE.Vector2(0, 0), 0.025);
+  	}
+  	//parent.arrowHelper.setDirection(new THREE.Vector3(parent.direction.x, 0, parent.direction.y));
+
+  	// Up
+  	if (input.up && ready) {
+		//balls[0].shootSpeed = (balls[0].shootSpeed >= 7) ? 7 : balls[0].shootSpeed + 0.1;
+  	}
+  	// Down
+  	if (input.down && ready) {
+		//balls[0].shootSpeed = (balls[0].shootSpeed <= 1) ? 1 : balls[0].shootSpeed - 0.1;
+  	}
+
+  	// Space
+  	if (input.space && ready) {
+		//this.shot = true;
+		//balls[0].velocity = new THREE.Vector2(balls[0].direction.x * balls[0].shootSpeed, balls[0].direction.y * balls[0].shootSpeed);
+  }
+}
+//
 
 var turn = 0;
 var playerTurn = 0;
@@ -291,6 +322,9 @@ var render = function () {
 	balls.forEach(function(Ball) {
 		Ball.update(delta, colBounds, poolHoles)
 	}, this);
+
+	
+	cueTurn();
 	input.update();
 	ballsHaveStopped();
 	calcScore();
@@ -300,7 +334,8 @@ var render = function () {
 	
 };
 
+parent.position.set(white_ball.position.x, white_ball.position.y, white_ball.position.z);
+console.log(white_ball.position)
 updatePoolCue();
 render();
 start();
-//endGame();
