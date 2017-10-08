@@ -173,12 +173,14 @@ function cueTurn() {
 	var ready = ballsHaveStopped();
 
   	if (input.left && ready) {
-		parent.rotation.y -= 0.025;		
+		parent.rotation.y -= 0.025;
+		console.log(parent.rotation.y);
   	}
   		// Right
   	if (input.right && ready) {
 		parent.rotation.y += 0.025;
-  	}
+		console.log(parent.rotation.y);
+	}
   	//parent.arrowHelper.setDirection(new THREE.Vector3(parent.direction.x, 0, parent.direction.y));
 
   	// Up
@@ -215,7 +217,9 @@ function nextTurn() {
 }
 
 
-//Make the ball rotate
+/**
+ * Make the ball rotate
+ */
 function rollTheBalls(){
 	for (let i = 0; i < balls.length; i++) {
 		if(balls[i].getTotalVelocity() >= 0.01){
