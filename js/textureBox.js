@@ -1,4 +1,4 @@
-//Constructor of a box
+//Constructor of a texture'ized box
 class textureBox {
     constructor(x, y, z, texture, height, width, depth){
         var material = new THREE.MeshBasicMaterial( { map: texture } );	

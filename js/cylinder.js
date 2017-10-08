@@ -12,9 +12,20 @@
 export class cylinder {
 
     constructor(x, y, z, constructorColor, height, radiusTop, radiusBottom){
-        var cylinderMaterial = new THREE.MeshPhongMaterial({
-			color : constructorColor
-		});			
+		var checkString = "#";
+		var toString = constructorColor.toString();
+		if (toString.substr(0, 1) == checkString){
+			console.log("Color is used!");
+			var cylinderMaterial = new THREE.MeshPhongMaterial({
+				color : constructorColor
+			});
+		}
+		else{
+			console.log("Image is used!");
+			var cylinderMaterial = new THREE.MeshBasicMaterial( { map: constructorColor } );
+		}	
+		
+        	
 		this.radiusTop = radiusTop;
 		this.radiusBottom = radiusBottom;
 		var geometry = new THREE.CylinderGeometry( radiusTop, radiusBottom, height); //CylinderGeometry(radiusTop, radiusBottom, height, radiusSegments, heightSegments, openEnded, thetaStart, thetaLength)
@@ -23,6 +34,5 @@ export class cylinder {
 		this.mesh.castShadow = true;
 		this.mesh.receiveShadow = true;
 		this.mesh.position.set(x, y, z);
-
     }
 }
