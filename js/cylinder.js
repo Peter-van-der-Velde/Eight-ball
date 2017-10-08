@@ -1,19 +1,27 @@
-//Constructor of a cylinder
+
+	/**
+	 * cylinder class for easy constructment of cylinders
+	 * @class
+	 * @param {number} x x-coordinate of the object
+	 * @param {number} y y-coordinate of the object
+	 * @param {number} z z-coordinate of the object
+	 * @param {string} constructorColor html color code
+	 * @param {number} height height of cylinder
+	 * @param {number} radius radius of the cylinder
+	 */
 export class cylinder {
+
     constructor(x, y, z, constructorColor, height, radius){
         var cylinderMaterial = new THREE.MeshPhongMaterial({
 			color : constructorColor
 		});			
 
-		var cylinderSize = new THREE.CylinderGeometry(); //CylinderGeometry(radiusTop, radiusBottom, height, radiusSegments, heightSegments, openEnded, thetaStart, thetaLength)
-		cylinderSize.height = height;
-		cylinderSize.radiusTop = radius;
-		cylinderSize.radiusBottom = cylinderSize.radiusTop;
+		var geometry = new THREE.CylinderGeometry( radius, radius, height); //CylinderGeometry(radiusTop, radiusBottom, height, radiusSegments, heightSegments, openEnded, thetaStart, thetaLength)
 		
-		var cylinder = new THREE.Mesh(cylinderSize, cylinderMaterial);
-		cylinder.castShadow = true;
-		cylinder.receiveShadow = true;
-		cylinder.position.set(x, y, z);
-		return cylinder;
+		this.mesh = new THREE.Mesh(geometry, cylinderMaterial);
+		this.mesh.castShadow = true;
+		this.mesh.receiveShadow = true;
+		this.mesh.position.set(x, y, z);
+
     }
 }
