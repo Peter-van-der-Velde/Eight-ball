@@ -175,10 +175,12 @@ function cueTurn() {
 
   	if (input.left && ready) {
 		//parent.rotateAround(new THREE.Vector2(0, 0), -0.025);
+		parent.rotation.y -= 0.025;		
   	}
   		// Right
   	if (input.right && ready) {
 		//parent.rotateAround(new THREE.Vector2(0, 0), 0.025);
+		parent.rotation.y += 0.025;
   	}
   	//parent.arrowHelper.setDirection(new THREE.Vector3(parent.direction.x, 0, parent.direction.y));
 
@@ -358,19 +360,14 @@ var render = function () {
 	balls.forEach(function(Ball) {
 		Ball.update(delta, colBounds, poolHoles)
 	}, this);
-<<<<<<< HEAD
-
 	
 	cueTurn();
-=======
-	
 	if(balls.length == 15){
 		endGame()
 		document.getElementById('endGame').style.visibility = "visible";
 	}
 	
 	rollTheBalls();
->>>>>>> d2b8a4f8d1f933dc71f91568ebfd516782b7e5f3
 	input.update();
 	ballsHaveStopped();
 	calcScore();
@@ -384,8 +381,3 @@ parent.position.set(white_ball.position.x, white_ball.position.y, white_ball.pos
 console.log(white_ball.position)
 updatePoolCue();
 render();
-<<<<<<< HEAD
-start();
-=======
-start();
->>>>>>> d2b8a4f8d1f933dc71f91568ebfd516782b7e5f3
