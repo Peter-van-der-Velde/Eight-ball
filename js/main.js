@@ -254,11 +254,10 @@ function updateValues() {
 	z = document.getElementById("z").value;
 }
 
-function setPoolCue() {
-
-}
-
-function aim() {
+/**
+ * start game
+ */
+function start() {
 	document.getElementById("submit").onclick = function () {
 		updateValues();
 		if (white_ball.position.y == 1.5) {
@@ -274,8 +273,33 @@ function aim() {
 	}
 }
 
-function start() {
-	aim()
+/**
+ * end the game
+ */
+function endGame() {
+	// find out who won
+	var winner = player1.name;
+	if (player2.totalPoints > player1.totalPoints)
+		winner = player2.name;
+	
+	var winnerH1 = document.getElementById("Wtext");
+	winnerH1.innerHTML = winner + " won!";
+
+	var s1 = document.getElementById("s1");
+	var s2 = document.getElementById("s2");
+
+	if (player2.totalPoints <= player1.totalPoints) {
+		s1.innerHTML = "1.	" + player1.name + "	" + player1.totalPoints;
+		s2.innerHTML = "2.	" + player2.name + "	" + player2.totalPoints;
+	} else {
+		s1.innerHTML = "1.	" + player2.name + "	" + player2.totalPoints;
+		s2.innerHTML = "2.	" + player1.name + "	" + player1.totalPoints;
+	}
+
+	var endDIV = document.getElementById('endGame');
+	endDIV.position = "absolute";
+	endDIV.display = "absolute";
+	console.log("well.. Hello there.");
 }
 
 
@@ -298,3 +322,4 @@ var render = function () {
 updatePoolCue();
 render();
 start();
+//endGame();
