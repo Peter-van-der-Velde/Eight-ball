@@ -133,11 +133,6 @@ scene.add(eight_ball_table);
 var poolHoles = [cylinder_1, cylinder_2, cylinder_3, cylinder_4, cylinder_5, cylinder_6] 
 
 poolCue.mesh.rotateZ(-0.55 * Math.PI);
-function updatePoolCue(){
-	// poolcue
-	//poolCue.mesh.position.set(white_ball.mesh.position.x - 0.8, white_ball.mesh.position.y + 0.15, white_ball.mesh.position.z);
-}
-
 
 //Set the camera position
 camera.position.set(-2.5, 2.5, 0);
@@ -170,16 +165,18 @@ pivot1.add(poolCue.mesh);
 poolCue.mesh.position.x = -1;
 poolCue.mesh.position.y = 0.1;
 
+function updatePoolCue(){
+	parent.position.set(white_ball.mesh.position.x, white_ball.mesh.position.y , white_ball.mesh.position.z);
+}
+
 function cueTurn() {
 	var ready = ballsHaveStopped();
 
   	if (input.left && ready) {
-		//parent.rotateAround(new THREE.Vector2(0, 0), -0.025);
 		parent.rotation.y -= 0.025;		
   	}
   		// Right
   	if (input.right && ready) {
-		//parent.rotateAround(new THREE.Vector2(0, 0), 0.025);
 		parent.rotation.y += 0.025;
   	}
   	//parent.arrowHelper.setDirection(new THREE.Vector3(parent.direction.x, 0, parent.direction.y));
@@ -232,9 +229,6 @@ function rollTheBalls(){
 		}
 	}
 }
-
-	
-
 
 
 /**
@@ -378,6 +372,6 @@ var render = function () {
 };
 
 parent.position.set(white_ball.position.x, white_ball.position.y, white_ball.position.z);
-console.log(white_ball.position)
 updatePoolCue();
 render();
+start();
