@@ -172,6 +172,7 @@ var players = [];
 players.push(player1);
 players.push(player2);
 
+
 var turn = 0;
 var playerTurn = 0;
 var x;
@@ -179,13 +180,18 @@ var z;
 var amountOfBalls;
 var amountOfBallsThisRound = balls.length;
 
-
+/**
+ * Prepares variables for the next round
+ */
 function nextTurn() {
 	amountOfBallsThisRound = balls.length;
 	turn++;
 	playerTurn = turn % players.length;
 }
 
+/**
+ * Check if the balls have stopped moving
+ */
 function ballsHaveStopped() {
 	for (let i = 0; i < balls.length; i++) {
 		if (balls[i].getTotalVelocity() >= 0.02)
@@ -194,11 +200,19 @@ function ballsHaveStopped() {
 	updatePoolCue();
 	return true;
 }
-	
+
+/**
+ * Calculate Score of Player
+ */
 function calcScore() {
 	if (amountOfBalls != balls.length) {
 		let score = (amountOfBallsThisRound - balls.length) * 100;
-		players[playerTurn].addPoints(score);
+		playerTurn = turn % players.length;
+
+		if (playerTurn % 2 == 1) // pure magic
+			players[0].addPoints(score);
+		else
+			players[1].addPoints(score);
 		amountOfBalls = balls.length;
 	}
 }
@@ -216,7 +230,6 @@ function onWindowResize(){
     camera.updateProjectionMatrix();
 
     renderer.setSize( window.innerWidth, window.innerHeight );
-
 }
 
 
@@ -254,8 +267,8 @@ function aim() {
 		} else { 
 			if (ballsHaveStopped()) {
 				updatePoolCue();
-				nextTurn();
 				white_ball.fire(new THREE.Vector3(x, 0, z));
+				nextTurn();
 			}
 		}
 	}
