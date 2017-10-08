@@ -286,6 +286,7 @@ video {
 	border-radius:10px;
 	width:160px;
 	min-width:100px;
+	margin:5px 0px;
 }
 .content input, select, textarea{
     color: #FFF;

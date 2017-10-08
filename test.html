@@ -49,6 +49,7 @@
 				<input type="range" min="0" max="7.9" step="0.1" value="0" class="slider" id="z">
 				<br><br>
 				<a><input class="button shoot" type="button" id="submit" value="Shoot"/></a>
+				<a><input class="button shoot" type="button" value="Cheat" onclick='cheat()'/></a>
 			</form> 
 		</div>
 		<div id="endGame">
@@ -110,6 +111,13 @@
 			sliderZ.oninput = function() {
 			  outputZ.innerHTML = this.value;
 			}			
+			
+			
+			
+			//Cheat
+			function cheat(){
+				document.getElementById('endGame').style.visibility = "visible";
+			}
 		</script>
 		<script src="js/three.min.js"></script>
 		<script src="js/OrbitControls.js"></script>

@@ -324,6 +324,8 @@ function start() {
 /**
  * end the game
  */
+ 
+ 
 function endGame() {
 	// find out who won
 	var winner = player1.name;
@@ -362,10 +364,6 @@ var render = function () {
 	}, this);
 	
 	cueTurn();
-	if(balls.length == 15){
-		endGame()
-		document.getElementById('endGame').style.visibility = "visible";
-	}
 	
 	rollTheBalls();
 	input.update();
