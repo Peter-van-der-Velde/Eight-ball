@@ -152,8 +152,8 @@ var axisHelper = new THREE.AxisHelper( 20 );
 scene.add( axisHelper );
 
 // add players to game
-var player1 = new Player("George"); 
-var player2 = new Player("George2");
+var player1 = new Player("Marco"); 
+var player2 = new Player("Peter");
 var players = [];
 players.push(player1);
 players.push(player2);
