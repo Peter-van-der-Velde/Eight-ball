@@ -224,7 +224,7 @@ function rollTheBalls(){
 	for (let i = 0; i < balls.length; i++) {
 		if(balls[i].getTotalVelocity() >= 0.01){
 			var localSpeed = new THREE.Vector3(balls[i].velocity.x, balls[i].velocity.y, balls[i].velocity.z).normalize();
-			console.log(balls[i].getTotalVelocity());
+			//console.log(balls[i].getTotalVelocity());
 			localSpeed.multiplyScalar(balls[i].getTotalVelocity()).normalize();
 			balls[i].mesh.rotateOnAxis(localSpeed, (balls[i].getTotalVelocity())*-0.5);
 		}
@@ -312,7 +312,7 @@ function start() {
 		} else { 
 			if (ballsHaveStopped()) {
 				updatePoolCue();
-				white_ball.fire(new THREE.Vector3(x, 0, z));
+				white_ball.fire(new THREE.Vector3(Math.cos(parent.rotation.y), 0, -Math.sin(parent.rotation.y)));
 				nextTurn();
 			}
 		}
