@@ -31,8 +31,10 @@ scene.add(roomItems);
 var green_mat = new textureBox(0, 1, 0, tableTexture,2.8 , 0.1, 1.6);
 var wall_1 = new box(1.4, 1, 0, '#835C3B', 0.1, 0.2, 1.3); //1.7
 var wall_2 = new box(-1.4, 1, 0, '#835C3B', 0.1, 0.2, 1.3); //1.7
-var wall_3 = new box(0, 1, 0.8, '#835C3B', 2.5, 0.2, 0.1); //2.7
-var wall_4 = new box(0, 1, -0.8, '#835C3B', 2.5, 0.2, 0.1); //2.7
+var wall_3 = new box(0.67, 1, 0.8, '#835C3B', 1.1, 0.2, 0.1); //2.7
+var wall_4 = new box(-0.67, 1, 0.8, '#835C3B', 1.1, 0.2, 0.1); //2.7
+var wall_5 = new box(0.67, 1, -0.8, '#835C3B', 1.1, 0.2, 0.1); //2.7
+var wall_6 = new box(-0.67, 1, -0.8, '#835C3B', 1.1, 0.2, 0.1); //2.7
 var cylinder_1 = new cylinder(0, 1, 1, '#000000', 1, 1);
 var leg_1 = new box(1.4, 0.5, -0.8, '#835C3B', 0.1, 1, 0.1);
 var leg_2 = new box(1.4, 0.5, 0.8, '#835C3B', 0.1, 1, 0.1);
