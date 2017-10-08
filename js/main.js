@@ -116,9 +116,10 @@ scene.add(eight_ball_table);
 // array of cylinders
 var poolHoles = [cylinder_1, cylinder_2, cylinder_3, cylinder_4, cylinder_5, cylinder_6] 
 
+poolCue.mesh.rotateZ(-0.55 * Math.PI);
+
 function updatePoolCue(){
 	// poolcue
-	poolCue.mesh.rotateZ(-0.55 * Math.PI);
 	console.log("white_ball.x : " + white_ball.mesh.position.x);
 	console.log("white_ball.y : " + white_ball.mesh.position.y);
 	console.log("white_ball.z : " + white_ball.mesh.position.z);
@@ -163,11 +164,13 @@ function nextTurn() {
 }
 
 function ballsHaveStopped() {
+	console.log("Checking for movement");
 	for (let i = 0; i < balls.length; i++) {
 		if (balls[i].getTotalVelocity() >= 0.02)
+			console.log("Balls still moveing");
 			return false;
 	}
-	updatePoolCue();
+	console.log("Balls have stopped");
 	return true;
 }
 	
@@ -229,6 +232,7 @@ function aim() {
 			players[playerTurn].addPoints(-50);
 		} else { 
 			if (ballsHaveStopped()) {
+				updatePoolCue();
 				nextTurn();
 				white_ball.fire(new THREE.Vector3(x, 0, z));
 			}
@@ -248,7 +252,8 @@ var render = function () {
 	balls.forEach(function(Ball) {
 		Ball.update(delta, colBounds, poolHoles)
 	}, this);
-
+	
+	ballsHaveStopped()
 	calcScore();
 	updateUI();
 	renderer.render( scene, camera );
