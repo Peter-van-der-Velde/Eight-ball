@@ -133,6 +133,32 @@ scene.add(grid);
 var axisHelper = new THREE.AxisHelper( 20 );
 scene.add( axisHelper );
 
+document.onkeydown = checkKey;
+
+/**
+ * checks if your key is pressed 
+ * @param {event} e 
+ */
+function checkKey(e) {
+
+	e = e || window.event;
+	var stillBalls = ballsHaveStopped();
+	//	console.log (e.keyCode);
+    if (e.keyCode == '87' && stillBalls) {  	// 'w'
+       
+    }
+    else if (e.keyCode == '83' && stillBalls) {	// 's'
+        
+    }
+    else if (e.keyCode == '65' && stillBalls) {	// 'a'
+       
+    }
+    else if (e.keyCode == '68' && stillBalls) {	// 'd'
+
+    }
+
+}
+
 // add players to game
 var player1 = new Player("George"); 
 var player2 = new Player("George2");
