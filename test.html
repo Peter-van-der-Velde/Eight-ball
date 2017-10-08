@@ -21,18 +21,6 @@
 		  	<source src="music/backgroundMusic.mp3" type="audio/mp3">
 			</audio>
 		</div>
-		<script src="js/three.min.js"></script>
-		<script src="js/OrbitControls.js"></script>
-		<script src="js/vector3.js"></script>
-		<script src="js/bounds.js"></script>
-		<script src="js/ball.js"></script>
-		<script src="js/whiteBall.js"></script>
-		<script src="js/roomBuilder.js"></script>
-		<script src="js/textureBox.js"></script>
-		<script src="js/lighting.js"></script>
-		<script src="js/player.js"></script>
-		<script src="js/game.js"></script>
-		<script type="module" src="js/main.js"></script>
 		<!-- UI -->
 		<div id="renderCanvasDiv">
 
@@ -59,14 +47,28 @@
 				<input type="button" id="submit" value="Submit">
 			</form> 
 		</div>
-		<script>
-				function playGame() {
-					var wrapper = document.getElementById("wrapper");
-					wrapper.style.display = "none";
-				}
-				wrapper.style.display = "none"; // for debug purposes
-				var audioPlayer = document.getElementById("backgroundPlayer");
-				audioPlayer.volume = 0.1;
-			</script>
 	</body>
+	<footer>
+		<script>
+			function playGame() {
+				var wrapper = document.getElementById("wrapper");
+				wrapper.style.display = "none";
+			}
+			wrapper.style.display = "none"; // for debug purposes
+			var audioPlayer = document.getElementById("backgroundPlayer");
+			audioPlayer.volume = 0.1;
+		</script>
+		<script src="js/three.min.js"></script>
+		<script src="js/OrbitControls.js"></script>
+		<script src="js/vector3.js"></script>
+		<script src="js/bounds.js"></script>
+		<script src="js/ball.js"></script>
+		<script src="js/whiteBall.js"></script>
+		<script src="js/roomBuilder.js"></script>
+		<script src="js/textureBox.js"></script>
+		<script src="js/lighting.js"></script>
+		<script src="js/player.js"></script>
+		<script src="js/game.js"></script>
+		<script type="module" src="js/main.js"></script>
+	</footer>
 </html>
