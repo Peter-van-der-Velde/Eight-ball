@@ -12,7 +12,7 @@ var killedBall =  new Ball(0, 0, 0, whiteBallTexture, 'neither');
  */
 class Ball {
 
-    constructor(x, y, z, constructorColor){
+    constructor(x, y, z, constructorColor, body){
 
         this.mesh;
         this.position = new THREE.Vector3(x, y, z);
@@ -24,6 +24,7 @@ class Ball {
         this.restitution = 1; // bounciness of said ball
         this.size = 0.03;
         this.weight = 1;
+        this.body = body;
 		
 		var checkString = "#";
 		var toString = constructorColor.toString();
