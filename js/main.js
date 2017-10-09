@@ -313,7 +313,7 @@ function updateValues() {
 function start() {
 	document.getElementById("submit").onclick = function () {
 		updateValues();
-		if (white_ball.position.y == 1.5) {
+		if (white_ball.position.y == -500) {
 			white_ball.respawn();
 			players[playerTurn].addPoints(-50);
 		} else { 

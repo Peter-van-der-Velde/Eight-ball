@@ -143,7 +143,7 @@ class Ball {
         this.position = new THREE.Vector3(posx, posy, posz);
         
         if (this.ballInHole(poolHoles)) {
-            this.position = new THREE.Vector3(0, 1.5, balls.length/100);
+            this.position = new THREE.Vector3(0, -500, balls.length/100);
             this.velocity = new THREE.Vector3(0, 0, 0);
             for(let i = 0; i < balls.length; i++) {
                 if (balls[i].position == this.position && this.constructor.name != "WhiteBall") 
