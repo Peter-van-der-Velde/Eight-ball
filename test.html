@@ -109,20 +109,6 @@
 			  outputZ.innerHTML = this.value;
 			}			
 			
-			
-			//Set player names
-			function askPlayerNames(){
-				var player1 = prompt("Player one, what is your name?");
-				var player2 = prompt("Player two, what is your name?");
-				
-				document.getElementById("player1").innerText += " " + player1;
-				document.getElementById("player2").innerText += " " + player2;
-				var players = [];
-				players.push(player1);
-				players.push(player2);
-			}
-			
-			
 			//Cheat
 			function cheat(){
 				document.getElementById('endGame').style.visibility = "visible";
