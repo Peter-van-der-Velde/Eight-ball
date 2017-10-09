@@ -9,7 +9,7 @@
 		<link rel="stylesheet" type="text/css" href="css/ui.css">
 		<link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
   </head>
-	<body>
+	<body onload="askPlayerNames()">
 		<div id="wrapper">
 			<div class="center-wrap">
 				<div class="button" id="button">
@@ -26,11 +26,13 @@
 			
 		</div>
 		<div class="content" id="p1stats" class="scoreBox" >
+			<p id="player1"></p>
 			<p>p1 stats:</p>
 			<p>score:</p>
 			<p id="p1Score">0</p>
 		</div>
 		<div class="content" id="p2stats" class="scoreBox">
+			<p id="player2"></p>
 			<p id="turn">0</p>
 			<p>p2 stats:</p>
 			<p>score:</p>
@@ -107,6 +109,18 @@
 			  outputZ.innerHTML = this.value;
 			}			
 			
+			
+			//Set player names
+			function askPlayerNames(){
+				var player1 = prompt("Player one, what is your name?");
+				var player2 = prompt("Player two, what is your name?");
+				
+				document.getElementById("player1").innerText += " " + player1;
+				document.getElementById("player2").innerText += " " + player2;
+				var players = [];
+				players.push(player1);
+				players.push(player2);
+			}
 			
 			
 			//Cheat
