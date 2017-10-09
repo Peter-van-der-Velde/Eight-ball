@@ -8,9 +8,9 @@ body {
     float: left;
     left: 1em;
     top: 1em;
-    height: 10em;
     width: 10em;
     z-index: 10;
+	padding: 10px;
 }
 
 #p2stats {
@@ -20,9 +20,9 @@ body {
     float: right;
     right: 1em;
     top: 1em;
-    height: 10em;
     width: 10em;
     z-index: 10;
+	padding: 10px;
 }
 
 #renderCanvas {
@@ -39,11 +39,26 @@ body {
     color: black;
     float: left;
     left: 1em;
-    top: 12em;
-    height: 10em;
     width: 10em;
     z-index: 10;
+	top: 300px;
+	padding: 10px;
 }
+
+#instructions {
+    position: absolute;
+    color: black;
+    float: right;
+    right: 1em;
+    width: 14em;
+    z-index: 10;
+	top: 300px;
+	padding: 20px 10px 10px 0px;
+	color: #FFF;
+	font-size:12px;
+	margin-right: 5px;
+}
+
 
 #endGame {
     height: 100%;

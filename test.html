@@ -18,7 +18,7 @@
 				</div>
 			</div>
 			<audio controls autoplay id="backgroundPlayer">
-				<!--<source src="music/backgroundMusic.mp3" type="audio/mp3">-->
+				<source src="music/backgroundMusic.mp3" type="audio/mp3">
 			</audio>
 		</div>
 		<!-- UI -->
@@ -48,6 +48,13 @@
 				<a><input class="button shoot" type="button" id="submit" value="Shoot"/></a>
 				<a><input class="button shoot" type="button" value="Cheat" onclick='cheat()'/></a>
 			</form> 
+		</div>
+		<div class="content" id="instructions">
+			<ul>
+				<li>Rotate the poolCue with the A and D keys</li>
+				<li>Use the W and D keys to control the power</li>
+				<li>Use the spacebar to Shoot!</li>
+			</ul>
 		</div>
 		<div id="endGame">
 			<video id="bgvid" playsinline autoplay muted loop>
