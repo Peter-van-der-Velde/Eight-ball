@@ -8,6 +8,7 @@ class Player {
         this.name = name;
         this.myRound = false;
         this.totalPoints = 0;
+        this.body;
     }
 
     /**

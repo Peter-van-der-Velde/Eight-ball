@@ -1,5 +1,7 @@
 var balls = [];
 var amountOfBallsInGame;
+var killedBall = undefined;
+
 /**
  * a ball class for the billiard balls
  * @class
@@ -46,11 +48,6 @@ class Ball {
 
         this.mesh.position.set(this.position.x, this.position.y, this.position.z)
     }
-	
-	
-	
-	
-	
 	
     /**
      * Updates the position of the mesh
@@ -146,8 +143,10 @@ class Ball {
             this.position = new THREE.Vector3(0, -500, balls.length/100);
             this.velocity = new THREE.Vector3(0, 0, 0);
             for(let i = 0; i < balls.length; i++) {
-                if (balls[i].position == this.position && this.constructor.name != "WhiteBall") 
-                    balls.splice(i, 1);   
+                if (balls[i].position == this.position && this.constructor.name != "WhiteBall") {
+                    balls.splice(i, 1);
+                    killedBall = this;
+                }
             }
             console.log (balls.length);
         }

@@ -262,11 +262,20 @@ function calcScore() {
 	if (amountOfBalls != balls.length) {
 		let score = (amountOfBallsThisRound - balls.length) * 100;
 		playerTurn = turn % players.length;
-
-		if (playerTurn % 2 == 1) // pure magic
-			players[0].addPoints(score);
-		else
-			players[1].addPoints(score);
+		if (killedBall != undefined) {
+			if (playerTurn % 2 == 1)  {// pure magic
+				if (killedBall.body ===  players[0].body)
+					players[0].addPoints(score);
+				else
+					players[0].addPoints(score * -0.5);
+			} else {
+				if (killedBall.body ===  players[1].body)
+					players[1].addPoints(score);
+				else
+					players[1].addPoints(score * -0.5);
+			}
+		}
+		killedBall = undefined;
 		amountOfBalls = balls.length;
 	}
 }
