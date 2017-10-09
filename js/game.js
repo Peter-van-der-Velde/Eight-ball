@@ -1,6 +1,7 @@
 /**
  * the main game class here are the game mechanics stored.
  * @class
+ * @deprecated
  * @param {Player[]} players array of players
  * @param {Ball[]} balls array of players
  */
