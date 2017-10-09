@@ -158,6 +158,18 @@ var players = [];
 players.push(player1);
 players.push(player2);
 
+//Set player names
+function askPlayerNames(){
+	var player1Name = prompt("Player one, what is your name?");
+	var player2Name = prompt("Player two, what is your name?");
+	
+	document.getElementById("player1").innerText += " " + player1Name;
+	document.getElementById("player2").innerText += " " + player2Name;
+
+	player1.name = player1Name;
+	player2.name = player2Name;
+}
+
 // cue code 
 parent = new THREE.Object3D();
 scene.add( parent );
@@ -275,7 +287,7 @@ function calcScore() {
 					players[1].addPoints(score * -0.5);
 			}
 		}
-		killedBall = undefined;
+		killedBall = new Ball(0, 0, 0, whiteBallTexture, 'neither');
 		amountOfBalls = balls.length;
 	}
 }

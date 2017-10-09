@@ -1,6 +1,6 @@
 var balls = [];
 var amountOfBallsInGame;
-var killedBall = undefined;
+var killedBall =  new Ball(0, 0, 0, whiteBallTexture, 'neither');
 
 /**
  * a ball class for the billiard balls
