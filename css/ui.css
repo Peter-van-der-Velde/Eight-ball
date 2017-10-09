@@ -59,6 +59,15 @@ body {
 	margin-right: 5px;
 }
 
+.turnIndicator{
+	position:relative;
+	color: #FFF;
+	z-index: 100;
+	margin: 20px auto;
+	width:10em;
+	height:60px;
+	text-align:center;
+}
 
 #endGame {
     height: 100%;
