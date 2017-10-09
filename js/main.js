@@ -45,22 +45,22 @@ scene.add(roomItems);
 
 
 //Creating the balls (lol)
-var white_ball = new WhiteBall(-1.0, 1.08, 0, whiteBallTexture);
-var ball_1 = new Ball(0.5, 1.08, 0, ball_1Texture);
-var ball_2 = new Ball(0.56, 1.08, 0.03, ball_2Texture);
-var ball_3 = new Ball(0.56, 1.08, -0.03, ball_3Texture);
-var ball_4 = new Ball(0.62, 1.08, 0, ball_4Texture);
-var ball_5 = new Ball(0.62, 1.08, 0.06, ball_5Texture);
-var ball_6 = new Ball(0.62, 1.08, -0.06, ball_6Texture);
-var ball_7 = new Ball(0.68, 1.08, 0.03, ball_7Texture);
-var ball_8 = new Ball(0.68, 1.08, -0.03, ball_8Texture);
-var ball_9 = new Ball(0.68, 1.08, 0.09, ball_9Texture);
-var ball_10 = new Ball(0.68, 1.08, -0.09, ball_10Texture);
-var ball_11 = new Ball(0.74, 1.08, 0, ball_11Texture);
-var ball_12 = new Ball(0.74, 1.08, 0.06, ball_12Texture);
-var ball_13 = new Ball(0.74, 1.08, -0.06, ball_13Texture);
-var ball_14 = new Ball(0.74, 1.08, 0.12, ball_14Texture);
-var ball_15 = new Ball(0.74, 1.08, -0.12, ball_15Texture);
+var white_ball = new WhiteBall(-1.0, 1.08, 0, whiteBallTexture), "white";
+var ball_1 = new Ball(0.5, 1.08, 0, ball_1Texture), "dashed";
+var ball_2 = new Ball(0.56, 1.08, 0.03, ball_2Texture), "dashed";
+var ball_3 = new Ball(0.56, 1.08, -0.03, ball_3Texture), "dashed";
+var ball_4 = new Ball(0.62, 1.08, 0, ball_4Texture), "dashed";
+var ball_5 = new Ball(0.62, 1.08, 0.06, ball_5Texture), "dashed";
+var ball_6 = new Ball(0.62, 1.08, -0.06, ball_6Texture), "dashed";
+var ball_7 = new Ball(0.68, 1.08, 0.03, ball_7Texture), "dashed";
+var ball_8 = new Ball(0.68, 1.08, -0.03, ball_8Texture), "black";
+var ball_9 = new Ball(0.68, 1.08, 0.09, ball_9Texture), "solid";
+var ball_10 = new Ball(0.68, 1.08, -0.09, ball_10Texture), "solid";
+var ball_11 = new Ball(0.74, 1.08, 0, ball_11Texture), "solid";
+var ball_12 = new Ball(0.74, 1.08, 0.06, ball_12Texture), "solid";
+var ball_13 = new Ball(0.74, 1.08, -0.06, ball_13Texture), "solid";
+var ball_14 = new Ball(0.74, 1.08, 0.12, ball_14Texture), "solid";
+var ball_15 = new Ball(0.74, 1.08, -0.12, ball_15Texture), "solid";
 
 balls.push(ball_1);
 balls.push(ball_2);
