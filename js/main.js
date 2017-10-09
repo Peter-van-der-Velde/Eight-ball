@@ -413,6 +413,8 @@ var render = function () {
 };
 
 parent.position.set(white_ball.position.x, white_ball.position.y, white_ball.position.z);
+killedBall =  new Ball(0, 0, 0, whiteBallTexture, 'neither');
+
 updatePoolCue();
 render();
 start();
