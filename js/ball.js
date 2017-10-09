@@ -1,6 +1,9 @@
 var balls = [];
 var amountOfBallsInGame;
 var killedBall;
+var turn = 0;
+var p1Sol = null;
+var p2Sol = null;
 
 /**
  * a ball class for the billiard balls
@@ -145,6 +148,11 @@ class Ball {
             this.velocity = new THREE.Vector3(0, 0, 0);
             for(let i = 0; i < balls.length; i++) {
                 if (balls[i].position == this.position && this.constructor.name != "WhiteBall") {
+                    if (balls.length == 16) {
+                        p1Sol = true;
+                        p2Sol = false;
+                    }
+
                     balls.splice(i, 1);
                     killedBall = this;
                 }
