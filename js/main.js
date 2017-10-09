@@ -212,6 +212,7 @@ function cueTurn() {
   	if (input.space && ready) {
 		if (white_ball.position.y == 1.5) {
 			white_ball.respawn();
+			updatePoolCue();
 			players[playerTurn].addPoints(-50);
 		} else { 
 			updatePoolCue();
@@ -222,7 +223,7 @@ function cueTurn() {
 }
 //
 
-var turn = 0;
+//var turn = 0;
 var playerTurn = 0;
 var power;
 var amountOfBalls;
@@ -337,6 +338,15 @@ function updateUI() {
  */
 function updateValues() {
 	power = document.getElementById("power").value;
+	if (p1Sol != null) {
+		if (p1Sol) {
+			players[0].body = 'solid';
+			players[1].body = 'dashed';
+		} else {
+			players[1].body = 'solid';
+			players[0].body = 'dashed';
+		} 
+	}
 }
 
 /**
@@ -347,6 +357,7 @@ function start() {
 		updateValues();
 		if (white_ball.position.y == -500) {
 			white_ball.respawn();
+			updatePoolCue();
 			players[playerTurn].addPoints(-50);
 		} else { 
 			if (ballsHaveStopped()) {
@@ -401,7 +412,7 @@ var render = function () {
 	}, this);
 	
 	cueTurn();
-	
+	updateValues();
 	rollTheBalls();
 	input.update();
 	ballsHaveStopped();
